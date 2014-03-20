@@ -4,7 +4,7 @@
 
 ***** Updates: Most of the Warning messages have been fixed, even the re-write process is working. But we still have to find a way for the less amount of false positives and false negatives. Probably need to test more vulnerable files.
 
-WE ARE DOING THIS PROJECT based on the paper <a href="http://spectrum.library.concordia.ca/8387/" target="_blank"><strong>"A new approach for testing buffer overflow vulnerabilities in C and C++" by Alouneh, Sahel A"</strong></a>
+<b>WE ARE DOING THIS PROJECT based on the paper</b> <a href="http://spectrum.library.concordia.ca/8387/" target="_blank"><strong>"A new approach for testing buffer overflow vulnerabilities in C and C++" by Alouneh, Sahel A"</strong></a>
 
 
 <blockquote>PLEASE FOLLOW THIS LINK BELOW IF YOU WANT TO COMPILE THE SCANNER IN THE WINDOWS OS. IN LINUX FLEX,BISON AND GCC COMES WITH THE SYSTEM SO U DONT NEED TO INSTALL ANYTHING.</blockquote>
