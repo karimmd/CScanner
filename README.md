@@ -1,3 +1,10 @@
+******Need to find a way to link between the output file and the Safe Library.The safe library is named as "SafeLib.h".In the grammar file named as "y.y",we have included SafeLib.h but its not using the library.Please check the SafeLib.h file to see if there is any way to link it to the y.y file.
+
+***** Updates: Scanning the cpp (C++ source code) also not properly functioning. We need to find a way so that scanner can scan C++ codes also.
+
+***** Updates: Most of the Warning messages have been fixed, even the re-write process is working. But we still have to find a way for the less amount of false positives and false negatives. Probably need to test more vulnerable files.
+
+
 <blockquote>PLEASE FOLLOW THIS LINK BELOW IF YOU WANT TO COMPILE THE SCANNER IN THE WINDOWS OS. IN LINUX FLEX,BISON AND GCC COMES WITH THE SYSTEM SO U DONT NEED TO INSTALL ANYTHING.</blockquote>
 
 http://stackoverflow.com/questions/5456011/how-to-compile-lex-yacc-files-on-windows
@@ -30,9 +37,6 @@ Here "second.c" is the re-writted safer version of the code. Even You can use th
 
 It means the first c(it can scan cpp extension too) is the file you want to scan, second.c is the safer version of the code,the scanner will try to produce and the warnings should be the vulnerability function alarm.If you check the y.y file,you can see some printf function containing those warnings.
 
-***** Updates: Scanning the cpp (C++ source code) also not properly functioning. We need to find a way so that scanner can scan C++ codes also.
-
-***** Updates: Most of the Warning messages have been fixed, even the re-write process is working. But we still have to find a way for the less amount of false positives and false negatives. Probably need to test more vulnerable files.
 
 <a href="http://imgur.com/riy0P1h"><img src="http://i.imgur.com/riy0P1h.png" title="Hosted by imgur.com"/></a>
 
