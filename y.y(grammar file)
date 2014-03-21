@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include "SafeLib.h"
+#include<time.h>
 
 FILE *outFile_p;
 FILE *outFile_p1;
@@ -84,7 +84,7 @@ char *string;
 
 %%
 
-commands: {fprintf(outFile_p,"%s","#include \"mylibrary.h\"\n");} /*empty*/
+commands: {fprintf(outFile_p,"%s","#include \"mujtaba.h\"\n");} /*empty*/
         | commands command
  
         ;
@@ -569,9 +569,16 @@ search2:WHITE   {fprintf(outFile_p,$1);}
                  printf("couldn't open temp for writing outfile_p1 \n");
                  exit(0);
                  }
+
+
+         clock_t begin, end;
+         double time_spent;
+ 
+         begin = clock();
          yyin=fp;
          yyparse();
          fclose(fp);
          fclose(outFile_p);
-		 }
-
+         end = clock();
+         time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+       }
