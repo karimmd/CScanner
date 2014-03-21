@@ -571,14 +571,14 @@ search2:WHITE   {fprintf(outFile_p,$1);}
                  }
 
 
-         clock_t begin, end;
-         double time_spent;
- 
-         begin = clock();
          yyin=fp;
          yyparse();
          fclose(fp);
          fclose(outFile_p);
+         clock_t begin, end;
+         double time_spent;
+         begin = clock();         
          end = clock();
          time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+         printf("%f", time_spent);
        }
