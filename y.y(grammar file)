@@ -84,7 +84,7 @@ char *string;
 
 %%
 
-commands: {fprintf(outFile_p,"%s","#include \"mujtaba.h\"\n");} /*empty*/
+commands: {fprintf(outFile_p,"%s","#include \"SafeLib.h\"\n");} /*empty*/
         | commands command
  
         ;
