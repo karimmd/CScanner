@@ -84,7 +84,7 @@ char *string;
 
 %%
 
-commands: {fprintf(outFile_p,"%s","#include \"SafeLib.h\"\n");} /*empty*/
+commands: {fprintf(outFile_p,"%s","#include \"mujtaba.h\"\n");} /*empty*/
         | commands command
  
         ;
@@ -570,15 +570,16 @@ search2:WHITE   {fprintf(outFile_p,$1);}
                  exit(0);
                  }
 
-
-         yyin=fp;
-         yyparse();
-         fclose(fp);
-         fclose(outFile_p);
-         clock_t begin, end;
-         double time_spent;
-         begin = clock();         
-         end = clock();
-         time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-         printf("%f", time_spent);
-       }
+         
+        
+    clock_t begin, end;
+    double time_spent;
+    begin = clock();                 
+    yyin=fp;
+    yyparse();
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    fclose(fp);
+    fclose(outFile_p);
+    printf("Total Time for Scanning %f", time_spent);
+  }
