@@ -46,7 +46,7 @@ finally <a href="http://en.wikipedia.org/wiki/GNU_Compiler_Collection" target="_
 
 Now to run the scanner you should
 
-    (linux)./test first.c second.c warnings.txt
+    (linux)     ./test first.c second.c warnings.txt
     (windows) test.exe first.c second.c warnings.txt
 
 Here "second.c" is the re-writted safer version of the code. Even You can use the text extension instead of c extension. 
