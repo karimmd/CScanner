@@ -1,4 +1,4 @@
-<h4>***** Updates1: Want to add some functions in the code so the scanner can show these lines in the output terminal screen</h4>
+<h4>***** Updates1: Want to add some functions in the code so the scanner can show these lines in the output terminal screen, please check the file RATS-report.c,these lines are taken from RATS tool</h4>
 
     Total lines analyzed: 7453
     Total time 0.006267 seconds
