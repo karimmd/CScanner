@@ -8,16 +8,7 @@
 
 <h4>****** Updates2: Need to find a way to link between the output file and the Safe Library.The safe library is named as "SafeLib.h".In the grammar file named as "y.y",we have included SafeLib.h but its not using the library.Please check the SafeLib.h file to see if there is any way to link it to the y.y file.Some pages from the Thesis</h4>
 
-<div id="img">
-<a href="http://imgur.com/k2zCuQs">
-<img src="http://i.imgur.com/k2zCuQs.png" title="Hosted by imgur.com"/></a></div>
-<div id="img">
-<a href="http://imgur.com/1sBTWq4">
-<img src="http://i.imgur.com/1sBTWq4.png" title="Hosted by imgur.com"/></a>
-</div>
-
-
-
+<a href="http://imgur.com/rYsQEVO"><img src="http://i.imgur.com/rYsQEVO.png" title="Hosted by imgur.com"/></a>
 
 <h4>***** Updates3: Scanning the cpp (C++ source code) also not properly functioning. We need to find a way so that scanner can scan C++ codes also.</h4>
 
