@@ -2,8 +2,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<safelib.h>
-#include<time.h>
+#include"safelib.h"
+#include<sys/time.h>
 
 FILE *outFile_p;
 FILE *outFile_p1;
@@ -54,7 +54,9 @@ return 1;
 %token STRTRNS
 %token STRPCPY
 %token WCSCPY
+%token WCPCPY
 %token WCSCAT
+
 
 %token GETWD
 %token REALPATH
@@ -540,7 +542,7 @@ search2:WHITE   {fprintf(outFile_p,$1);}
               
 %%
      
-     int main(int argc,char*argv[])
+     int main(int argc,char*argv[])  
      {
          FILE *fp;
          if(argc<3)
@@ -567,16 +569,21 @@ search2:WHITE   {fprintf(outFile_p,$1);}
                  exit(0);
                  }
 
-         
         
-    clock_t begin, end;
-    double time_spent;
-    begin = clock();                 
+    struct timeval tim; 
+    int total_lines = 0; 
+    gettimeofday(&tim, NULL);  
+    double t1=tim.tv_sec+(tim.tv_usec/1000000.0);                   
     yyin=fp;
     yyparse();
+    gettimeofday(&tim, NULL);  
+    double t2=tim.tv_sec+(tim.tv_usec/1000000.0);
+    double fsecs;  
     fclose(fp);
     fclose(outFile_p);
-    end = clock();
-    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("\nTotal Time for Scanning %f", time_spent);
+    fsecs=t2 - t1;
+    printf("Total lines analyzed: %d\n", total_lines);
+    printf("Total time %.6lf seconds\n", fsecs);
+    printf("%d lines per second\n", (int)(total_lines/fsecs));  
+    return 0;
   }
