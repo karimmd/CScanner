@@ -1,14 +1,14 @@
-<h3>****** Updates: Need to find a way to link between the output file and the Safe Library.The safe library is named as "SafeLib.h".In the grammar file named as "y.y",we have included SafeLib.h but its not using the library.Please check the SafeLib.h file to see if there is any way to link it to the y.y file.</h3>
+<h4>****** Updates: Need to find a way to link between the output file and the Safe Library.The safe library is named as "SafeLib.h".In the grammar file named as "y.y",we have included SafeLib.h but its not using the library.Please check the SafeLib.h file to see if there is any way to link it to the y.y file.</h4>
 
 
-***** Updates: Want to add some functions in the code so the scanner can show these lines in the output terminal screen 
+<h6>***** Updates: Want to add some functions in the code so the scanner can show these lines in the output terminal screen 
 
-<blockquote>Total lines analyzed: 7453
+<code>Total lines analyzed: 7453
 Total time 0.006267 seconds
-1189245 lines per second</blockquote>
+1189245 lines per second</code></h6>
 
 
-***** Updates: Scanning the cpp (C++ source code) also not properly functioning. We need to find a way so that scanner can scan C++ codes also.
+<h8>***** Updates: Scanning the cpp (C++ source code) also not properly functioning. We need to find a way so that scanner can scan C++ codes also.</h8>
 
 ***** Updates: Most of the Warning messages have been fixed, even the re-write process is working. But we still have to find a way for the less amount of false positives and false negatives. Probably need to test more vulnerable files.
 
