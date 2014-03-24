@@ -6,7 +6,13 @@
 
 
 
-<h4>****** Updates2: Need to find a way to link between the output file and the Safe Library.The safe library is named as "SafeLib.h".In the grammar file named as "y.y",we have included SafeLib.h but its not using the library.Please check the SafeLib.h file to see if there is any way to link it to the y.y file.</h4>
+<h4>****** Updates2: Need to find a way to link between the output file and the Safe Library.The safe library is named as "SafeLib.h".In the grammar file named as "y.y",we have included SafeLib.h but its not using the library.Please check the SafeLib.h file to see if there is any way to link it to the y.y file.Some pages from the Thesis</h4>
+
+<a href="http://imgur.com/k2zCuQs"><img src="http://i.imgur.com/k2zCuQs.png" title="Hosted by imgur.com"/></a>
+<a href="http://imgur.com/1sBTWq4"><img src="http://i.imgur.com/1sBTWq4.png" title="Hosted by imgur.com"/></a>
+
+
+
 
 <h4>***** Updates3: Scanning the cpp (C++ source code) also not properly functioning. We need to find a way so that scanner can scan C++ codes also.</h4>
 
@@ -14,7 +20,7 @@
 
 
 
-<b>WE ARE DOING THIS PROJECT based on the paper</b> <a href="http://spectrum.library.concordia.ca/8387/" target="_blank"><strong>"A new approach for testing buffer overflow vulnerabilities in C and C++" by Alouneh, Sahel A"</strong></a>
+<b>WE ARE DOING THIS PROJECT based on the paper</b> <a href="http://spectrum.library.concordia.ca/8387/" target="_blank"><strong>"A new approach for testing buffer overflow vulnerabilities in C and C++" by Alouneh, Sahel A"</strong></a>This is the Scanner Architecture <a href="http://imgur.com/2OLZx0W"><img src="http://i.imgur.com/2OLZx0W.png" title="Hosted by imgur.com"/></a>
 
 
 <blockquote>PLEASE FOLLOW THIS LINK BELOW IF YOU WANT TO COMPILE THE SCANNER IN THE WINDOWS OS. IN LINUX FLEX,BISON AND GCC COMES WITH THE SYSTEM SO U DONT NEED TO INSTALL ANYTHING.</blockquote>
