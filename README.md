@@ -40,12 +40,14 @@ In spite of having this conflict we were still able to compile the code,so not y
 
 finally <a href="http://en.wikipedia.org/wiki/GNU_Compiler_Collection" target="_blank"><strong>GCC</strong></a> has been used to compile the final executable file
 
-<code>$ gcc lex.yy.c y.tab.c -o test</code>   (here test is the application name)
+     gcc lex.yy.c y.tab.c -o test   (here test is the application name)
+     g++ y.tab.c lex.yy.c -o test   (i have made some change adding extern C function,but with extern C cant compile with gcc,so i have uploaded a seperated yacc file)
 
 
 Now to run the scanner you should
 
-<code>$ ./test first.c second.c warnings.txt</code>
+    (linux)./test first.c second.c warnings.txt
+    (windows) test.exe first.c second.c warnings.txt
 
 Here "second.c" is the re-writted safer version of the code. Even You can use the text extension instead of c extension. 
 
