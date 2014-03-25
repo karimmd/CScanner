@@ -1,10 +1,10 @@
-<h4>*****Updates1: Scanning the cpp (C++ source code) also not properly functioning. We need to find a way so that scanner can scan C++ codes also.</h4>
-
-<h4>******Updates2: Need to find a way to link between the output file and the Safe Library.The safe library is named as "SafeLib.h".Here The SafeLib file is not complete.So we need to find a way to complete the SafeLib file and link it to the scanner for better performance.In the grammar file named as "y.y",we have included SafeLib.h but its not using the library.Please check the SafeLib.h file to see if there is any way to link it to the y.y file.Some pages from the Thesis</h4>
+<h4>******Job Left-1: Need to find a way to link between the output file and the Safe Library.The safe library is named as "SafeLib.h".Here The SafeLib file is not complete.So we need to find a way to complete the SafeLib file and link it to the scanner for better performance.In the grammar file named as "y.y",we have included SafeLib.h but its not using the library.Please check the SafeLib.h file to see if there is any way to link it to the y.y file.Some pages from the Thesis</h4>
 
 <a href="http://imgur.com/rYsQEVO"><img src="http://i.imgur.com/rYsQEVO.png" title="Hosted by imgur.com"/></a>
 
-<h4>***** Updates3: Most of the Warning messages have been fixed, even the re-write process is working. But we still have to find a way for the less amount of false positives and false negatives. Probably need to test more vulnerable files.</h4>
+<h4>*****Job Left-2: Scanning the cpp (C++ source code) also not properly functioning. We need to find a way so that scanner can scan C++ codes also.</h4>
+
+<h4>***** Job Left-3: Most of the Warning messages have been fixed, even the re-write process is working. But we still have to find a way for the less amount of false positives and false negatives. Probably need to test more vulnerable files.</h4>
 
 
 
