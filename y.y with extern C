@@ -544,14 +544,27 @@ search2:WHITE   {fprintf(outFile_p,$1);}
      
      int main(int argc,char*argv[])  
      {
+       
+         int line_count = 0;
          FILE *fp;
+         char ch;
+         fp=fopen(argv[1],"r");
+         while ((ch = fgetc(fp)) != EOF)
+         {
+         if (ch  ==  '\n')
+         {
+         line_count++;
+         }
+         }     
+         
          if(argc<3)
          {
              printf("please specify the input and out file \n");
              exit(0);
              }
+         
          fp=fopen(argv[1],"r");
-         if(!fp)
+          if(!fp)
              {
                  printf("couldn't open file for reading \n");
                  exit(0);
@@ -568,10 +581,8 @@ search2:WHITE   {fprintf(outFile_p,$1);}
                  printf("couldn't open temp for writing outfile_p1 \n");
                  exit(0);
                  }
-
         
     struct timeval tim; 
-    int total_lines = 0; 
     gettimeofday(&tim, NULL);  
     double t1=tim.tv_sec+(tim.tv_usec/1000000.0);                   
     yyin=fp;
@@ -582,8 +593,8 @@ search2:WHITE   {fprintf(outFile_p,$1);}
     fclose(fp);
     fclose(outFile_p);
     fsecs=t2 - t1;
-    printf("Total lines analyzed: %d\n", total_lines);
+    printf("Total lines analyzed: %d\n", line_count);
     printf("Total time %.6lf seconds\n", fsecs);
-    printf("%d lines per second\n", (int)(total_lines/fsecs));  
+    printf("%d lines per second\n", (int)(line_count/fsecs));  
     return 0;
   }
