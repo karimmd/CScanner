@@ -593,8 +593,10 @@ search2:WHITE   {fprintf(outFile_p,$1);}
     fclose(fp);
     fclose(outFile_p);
     fsecs=t2 - t1;
-    printf("Total lines analyzed: %d\n", line_count);
-    printf("Total time %.6lf seconds\n", fsecs);
-    printf("%d lines per second\n", (int)(line_count/fsecs));  
+    printf("\n###########SCANNING ANALYSIS###################\n");
+    printf("\nTOTAL LINES ANALYZED: %d\n", line_count);
+    printf("\nTOTAL TIMES TO SCAN :%.6lf seconds\n", fsecs);
+    printf("\nSCANNED LINES PER SECOND:%d\n", (int)(line_count/fsecs));
+    printf("\n################################################\n");
     return 0;
   }
