@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include"safelib.h"
+#include"SafeLib.h"
 #include<sys/time.h>
 
 FILE *outFile_p;
@@ -33,40 +33,45 @@ return 1;
 
 %}
 
+%token CHAR 
+
+
 %token STRCPY
 %token STRCAT
-%token GETS
-%token SPRINTF
-%token VSPRINTF
 %token BCOPY
-%token SCANF
-%token TAB
-%token EOL
-%token SIMICOL
-%token COM
-%token PERCENT
-
-%token GETOPT
-%token GETPASS
-%token STRECPY
-%token STREADD
-%token STRNCPY
-%token STRTRNS
-%token STRPCPY
-%token WCSCPY
-%token WCPCPY
-%token WCSCAT
-
-
-%token GETWD
-%token REALPATH
 %token MEMCPY
 %token MEMCHR
 %token MEMCCPY
 %token MEMMOVE
 %token MEMSET
-%token CHAR NEW
- 
+
+
+%token SPRINTF
+%token VSPRINTF
+%token GETS
+%token SCANF
+%token GETOPT
+%token STRECPY
+%token STREADD
+%token STRCCPY
+%token STRTRNS
+%token WCSCPY
+%token WCSCAT
+
+
+%token GETPASS
+%token REALPATH
+
+
+%token NEW
+%token COM
+%token TAB
+%token EOL
+%token SIMICOL
+%token PERCENT
+
+
+
 %union
 {
 int number;
@@ -89,7 +94,7 @@ char *string;
 
 %%
 
-commands: {fprintf(outFile_p,"%s","#include \"safelib.h\"\n");} /*empty*/
+commands: {fprintf(outFile_p,"%s","#include \"SafeLib.h\"\n");} /*empty*/
         | commands command
         ;
  
@@ -157,7 +162,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {fprintf(outFile_p,"%s%s%s","_~strcpy(",$3,",");
         fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcpy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcpy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
         |
         STRCPY LBRAK WORD WHITE SIMICOL
@@ -167,7 +172,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {fprintf(outFile_p,"%s%s%s","_~strcpy(",$3,",");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcpy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcpy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
 	|
 	STRCPY LBRAK WORD RBRAK SIMICOL
@@ -177,7 +182,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {fprintf(outFile_p,"%s%s%s%s","_~strcpy",$2,$3,"),");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s%s","_strcpy",$2,"sizeof(",$3,")),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcpy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
         |
 	STRCPY LBRAK WORD WHITE RBRAK SIMICOL
@@ -187,7 +192,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {fprintf(outFile_p,"%s%s%s","_~strcpy(",$3,",");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcpy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcpy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}   
         |
         STRCPY LBRAK WORD PLUS WORD SIMICOL
@@ -197,7 +202,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s","~+~strcpy(","4","-",$5,",",$3,"+",$5,",");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s%s","_strcpy",$2,"sizeof(",$3,")-",$5,",",$3,"+",$5,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcpy() rewrite process in line %d\n",counter+1);}
+        fprintf(outFile_p1,"\nThere is a strcpy() rewrite process in line %d\n",counter+1);}
 	    |
         STRCPY             
         {fprintf(outFile_p,"%s","strcpy");}
@@ -211,7 +216,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~strcat(",$3,",");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcat","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcat() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcat() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
         |
         STRCAT LBRAK WORD WHITE SIMICOL
@@ -220,7 +225,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~strcat(",$3,",");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcat","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcat() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcat() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}                                     
         |
         STRCAT LBRAK WORD RBRAK SIMICOL
@@ -229,7 +234,7 @@ search1:STRCPY LBRAK WORD SIMICOL
 	{if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s%s","_~strcat",$2,$3,"),");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s%s","_strcat",$2,"sizeof(",$3,")),",$3,",");printf("\nfals=%d\n",fals);
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcat() rewrite process in line %d\n",counter+1);}
+        fprintf(outFile_p1,"\nThere is a strcat() rewrite process in line %d\n",counter+1);}
         |
         STRCAT LBRAK WORD WHITE RBRAK SIMICOL
         {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
@@ -237,7 +242,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~strcat(",$3,",");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcat","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcat() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcat() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}            
         |
         STRCAT LBRAK WORD PLUS WORD SIMICOL
@@ -246,70 +251,13 @@ search1:STRCPY LBRAK WORD SIMICOL
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s","~+~strcat(","4","-",$5,",",$3,"+",$5,",");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s%s","_strcat",$2,"sizeof(",$3,")-",$5,",",$3,"+",$5,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcat() rewrite process in line %d\n",counter+1);}
-	    |
+        fprintf(outFile_p1,"\nThere is a strcat() rewrite process in line %d\n",counter+1);}
+	|
         STRCAT             
         {fprintf(outFile_p,"%s","strcat");}
         |
         STRCAT LBRAK
         {fprintf(outFile_p,"%s","strcat");}
-        |
-        MEMCCPY LBRAK WORD SIMICOL
-        {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memccpy(",$3,",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memccpy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memccpy() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-        |
-        MEMCCPY LBRAK WORD WHITE SIMICOL
-        {int fals=0;temp2=$3,printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memccpy(",$3,",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memccpy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memccpy() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-        |
-        MEMMOVE LBRAK WORD SIMICOL
-        {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memmove(",$3,",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memmove","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memmove() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-        |
-        MEMMOVE LBRAK WORD WHITE SIMICOL
-        {int fals=0;temp2=$3,printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memmove(",$3,",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memmove","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memmove() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-        |
-        MEMSET LBRAK WORD SIMICOL
-        {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memset(",$3,",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memset","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memset() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-        |
-        MEMSET LBRAK WORD WHITE SIMICOL
-        {int fals=0;temp2=$3,printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memset(",$3,",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memset","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memset() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
         |
         BCOPY LBRAK WORD SIMICOL
         {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
@@ -317,7 +265,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {if (!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~bcopy(",$3,",");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_bcopy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a bcopy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a bcopy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
         |
         BCOPY LBRAK WORD PLUS WORD SIMICOL
@@ -327,7 +275,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s","~+~bcopy","$2","4","-",$5,",",$3,"+",$5,",");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s%s","_bcopy",$2,"sizeof(",$3,")-",$5,",",$3,"+",$5,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a bcopy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a bcopy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);} 	
         |
         BCOPY LBRAK WORD WHITE SIMICOL
@@ -336,7 +284,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~bcopy(",$3,",");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_bcopy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a bcopy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a bcopy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);} 
         |
         BCOPY
@@ -347,45 +295,14 @@ search1:STRCPY LBRAK WORD SIMICOL
         |
         BCOPY LBRAK ANY 
         {fprintf(outFile_p,"%s%s%s","_bcopy",$2,$3);}
-        |
-        STRECPY LBRAK WORD SIMICOL
-        {int fals=0;temp2=$3;
-        printf("\ntemp2=%s\n",temp2);
-        int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2) && pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~strecpy(",$3,",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_strecpy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strecpy() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-	|
-	STREADD LBRAK WORD SIMICOL
-        {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2) && pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~streadd(",$3,",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_streadd","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a streadd() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-        |
-        STRNCPY LBRAK WORD SIMICOL
-        {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2) && pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","~strlcpy(",$3,",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","strlcpy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strncpy() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-        |
+        |     
         MEMCPY LBRAK WORD SIMICOL
         {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~memcpy(",$3,",");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_memcpy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memcpy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a memcpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
         |
         MEMCPY LBRAK WORD WHITE SIMICOL
@@ -395,7 +312,7 @@ search1:STRCPY LBRAK WORD SIMICOL
         {fprintf(outFile_p,"%s%s%s","_~memcpy(",$3,",");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_memcpy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memcpy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a memcpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
         |
         MEMCPY LBRAK WORD PLUS WORD SIMICOL
@@ -405,46 +322,92 @@ search1:STRCPY LBRAK WORD SIMICOL
         {fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s","~+~memcpy(","4","-",$5,",",$3,"+",$5,",");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s%s","_memcpy",$2,"sizeof(",$3,")-",$5,",",$3,"+",$5,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memcpy() rewrite process in line %d\n",counter+1);}
+        fprintf(outFile_p1,"\nThere is a memcpy() rewrite process in line %d\n",counter+1);}
         |
-        WCSCPY LBRAK WORD SIMICOL
-        {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for (j=0;j<i;j++)
-        {if (!strcmp(temp[k],temp2) && pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~wcscpy(",$3,",");break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s","_wcscpy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-write Warning::There is a wcscpy() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-        |
-        WCSCPY LBRAK WORD WHITE SIMICOL
-        {int fals=0;temp2=$3,printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~wcscpy(",$3,",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_wcscpy","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a wcscpy() rewrite process in line %d\n",counter+1);
-        printf("\nflas=%d\n",fals);}
-        |
-        WCSCAT LBRAK WORD SIMICOL
+        MEMCHR LBRAK WORD SIMICOL
         {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~wcscat(",$3,",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_wcscat","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a wcscat() rewrite process in line %d\n",counter+1);
+        {fprintf(outFile_p,"%s%s%s","_~memchr(",$3,",");fals=1;break;}k++;}if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memchr","(sizeof(",$3,"),",$3,",");
+        fprintf(outFile_p1,"\nThere is a memchr() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
         |
-        WCSCAT LBRAK WORD WHITE SIMICOL
+        MEMCHR LBRAK WORD WHITE SIMICOL
         {int fals=0;temp2=$3,printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~wcscat(",$3,",");fals=1;break;}k++;}
+        {fprintf(outFile_p,"%s%s%s","_~memchr(",$3,",");fals=1;break;}k++;}
         if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_wcscat","(sizeof(",$3,"),",$3,",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a wcscat() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memchr","(sizeof(",$3,"),",$3,",");
+        fprintf(outFile_p1,"\nThere is a memchr() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
+        |
+        MEMCHR LBRAK WORD PLUS WORD SIMICOL
+        {int fals=0;temp2=$3,printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s","~+~memchr(","4","-",$5,",",$3,"+",$5,",");fals=1;break;}k++;}
+        if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s%s","_memchr",$2,"sizeof(",$3,")-",$5,",",$3,"+",$5,",");
+        fprintf(outFile_p1,"\nThere is a memchr() rewrite process in line %d\n",counter+1);}
+        |   
+        MEMCCPY LBRAK WORD SIMICOL
+        {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memccpy(",$3,",");fals=1;break;}k++;}if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memccpy","(sizeof(",$3,"),",$3,",");
+        fprintf(outFile_p1,"\nThere is a memccpy() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}
+        |
+        MEMCCPY LBRAK WORD WHITE SIMICOL
+        {int fals=0;temp2=$3,printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memccpy(",$3,",");fals=1;break;}k++;}
+        if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memccpy","(sizeof(",$3,"),",$3,",");
+        fprintf(outFile_p1,"\nThere is a memccpy() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}
+        |
+        MEMMOVE LBRAK WORD SIMICOL
+        {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memmove(",$3,",");fals=1;break;}k++;}if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memmove","(sizeof(",$3,"),",$3,",");
+        fprintf(outFile_p1,"\nThere is a memmove() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}
+        |
+        MEMMOVE LBRAK WORD WHITE SIMICOL
+        {int fals=0;temp2=$3,printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memmove(",$3,",");fals=1;break;}k++;}
+        if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memmove","(sizeof(",$3,"),",$3,",");
+        fprintf(outFile_p1,"\nThere is a memmove() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}
+        |
+        MEMSET LBRAK WORD SIMICOL
+        {int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memset(",$3,",");fals=1;break;}k++;}if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memset","(sizeof(",$3,"),",$3,",");
+        fprintf(outFile_p1,"\nThere is a memset() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}
+        |
+        MEMSET LBRAK WORD WHITE SIMICOL
+        {int fals=0;temp2=$3,printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memset(",$3,",");fals=1;break;}k++;}
+        if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memset","(sizeof(",$3,"),",$3,",");
+        fprintf(outFile_p1,"\nThere is a memset() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}       
         |
         SPRINTF LBRAK WORD SIMICOL
         {int flipper1=0;int fals=0;temp2=$3;printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
@@ -491,38 +454,53 @@ search1:STRCPY LBRAK WORD SIMICOL
         {fprintf(outFile_p,"%s%s%s%s","scanf(","\"","%",$5);}
         |
         GETOPT LBRAK 
-        {fprintf(outFile_p,"\n/*There is a buffer overflow security problem using the following GETOPT()*/\ngetopt(");
+        {fprintf(outFile_p,"\n/*There is a buffer overflow security problem using the following GETOPT()*/\ngetopt()");
 	fprintf(outFile_p1,"\n High-Risk Warning::There is a getopt() buffer overflow security problem in line %d\n",counter+1); 
         printf ("Warning:buffer overflow problem in line=%d\n",counter+1);}
 	|
 	GETPASS LBRAK
-        {fprintf(outFile_p,"\n/*There is a buffer overflow security problem using the following GETPASS()*/\ngetpass(");
+        {fprintf(outFile_p,"\n/*There is a buffer overflow security problem using the following GETPASS()*/\ngetpass()");
         fprintf(outFile_p1,"\n High-Risk Warning::There is a getpass() buffer overflow security problem in line %d\n",counter+1); 
         printf ("Warning:buffer overflow problem in line=%d\n",counter+1);}
         |        
         STRTRNS LBRAK
-        {fprintf(outFile_p,"/*There is a buffer overflow security problem using the following STRTRNS()*/strtrns(");
+        {fprintf(outFile_p,"/*There is a buffer overflow security problem using the following STRTRNS()*/strtrns()");
         fprintf(outFile_p1,"\n Medium-Risk Warning::There is a buffer overflow security problem in line %d\n",counter+1); 
-        printf ("Warning:buffer overflow problem in line=%d\n",counter+1);}
-        |
-        STRPCPY LBRAK
-        {fprintf(outFile_p,"/*There is a buffer overflow security problem using the following STRPCPY()*/strpcpy(");
-        fprintf(outFile_p1,"\n Medium-Risk Warning::There is a buffer overflow security problem in line %d\n",counter+1); 
-        printf ("Warning:buffer overflow problem in line=%d\n",counter+1);} 
-	    |	
-        GETWD LBRAK {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following GETWD()*/\ngetwd(");
-        fprintf(outFile_p1,"\n Low-Risk Warning::There is a getwd() buffer overflow security problem in line %d\n",counter+1);printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
+        printf ("Warning:buffer overflow problem in line=%d\n",counter+1);}       	        
         |
         REALPATH LBRAK 
-        {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following REALPATH()*/\nrealpath(");
-	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a realpath() buffer everflow security problem in line %d\n",counter+1);
+        {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following REALPATH()*/\nrealpath()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a realpath() buffer overflow security problem in line %d\n",counter+1);
 	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
-        |       
-        MEMCHR LBRAK
-        {fprintf(outFile_p,"/*Warning: Possible buffer overflow may happen using this function */memchr(");
-        fprintf(outFile_p1,"\n Low-Risk Warning:: Possible buffer overflow may happen using the memch() in line=%d\n",counter+1);}
-    
-        
+        |
+        STRECPY LBRAK 
+        {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following STRECPY()*/\nstrecpy()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a strecpy() buffer overflow security problem in line %d\n",counter+1);
+	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
+        |
+        STREADD LBRAK 
+        {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following STREADD()*/\nstreadd()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a streadd() buffer overflow security problem in line %d\n",counter+1);
+	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}       
+        |
+        STRCCPY LBRAK 
+        {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following STRCCPY()*/\nstrccpy()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a strccpy() buffer overflow security problem in line %d\n",counter+1);
+	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
+        |
+        WCSCPY LBRAK 
+        {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following WCSCPY()*/\nwcscpy()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a wcscpy() buffer overflow security problem in line %d\n",counter+1);
+	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
+        |
+        WCSCAT LBRAK 
+        {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following WCSCAT()*/\nwcscat()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a wcscat() buffer overflow security problem in line %d\n",counter+1);
+	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
+
+
+
+
 
 search2:WORD    {fprintf(outFile_p,$1);}
 search2:WHITE   {fprintf(outFile_p,$1);}
