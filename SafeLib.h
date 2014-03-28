@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<string.h>
 
-void Sstrcpy(int a,char b[],char c[])
+void strcpy(int a,char b[],char c[])
 { 
 	int k;
 	k=strlen(c);
@@ -14,7 +14,7 @@ void Sstrcpy(int a,char b[],char c[])
   {   if (k>a)
 	  {
 		  strncpy(b,c,a);
-		  b[a]='\0';
+		  b[a]= '\0';
 		  
 	}
 	
@@ -34,14 +34,13 @@ void _sstrcpy(char b[],char c[])
 	     
 	   {
 		   strncpy(b,c,4);
-		   b[4]='\0';
+		   b[k]= '\0';
 		 }
 		 else
 		        strcpy(b,c);
 }
 
-
-void Sstrcat(int a,char b[],char c[])
+void strcat(int a,char b[],char c[])
 {
 	 int k;
 	 k=strlen(c);
@@ -71,7 +70,7 @@ void _sstrcat(char b[],char c[])
 		       strcat(b,c);
 }
 
-void Mmemcpy(int a,char b[],char c[],int d)
+void memcpy(int a,char b[],char c[],int d)
 {
 	 if (a==4)
 	          memcpy(b,c,d);
@@ -99,7 +98,7 @@ void _mmemcpy(char b[],char c[],int d)
 }		       	   	      		 
 
 		          
-/*void Bbcopy(int a,char b[],char c[],int d)
+void bcopy(int a,char b[],char c[],int d)
 {
 	 if (a==4)
 	          bcopy(b,c,d);
@@ -126,8 +125,9 @@ void _bbcopy(char b[],char c[],int d)
 		else
 		       bcopy(b,c,d);
 }		          
- */
-void Mmemccpy(int a,char b[],char c[],int d,int e)
+		          
+
+void memccpy(int a,char b[],char c[],int d,int e)
 {
 	 if (a==4)
 	          memccpy(b,c,d,e);
@@ -156,7 +156,7 @@ void _mmemccpy(int a,char b[],char c[],int d,int e)
 }		
 
 
-void Mmemmove(int a,char b[],char c[],int d)
+void memmove(int a,char b[],char c[],int d)
 {
 	 if (a==4)
 	          memmove(b,c,d);
@@ -184,7 +184,7 @@ void _mmemmove(char b[],char c[],int d)
 		       memmove(b,c,d);
 }	
 
-void Mmemset(int a,char b[],int c,int d)
+void memset(int a,char b[],int c,int d)
 {
 if(a==4)
         memset(b,c,d);
@@ -210,98 +210,5 @@ void _mmrmset(char b[],int c,int d)
    else
          memset(b,c,d);
 }
-  /*  
-char Sstrecpy(int a, char b[],char c[],char d[])
-{
-if (a==4)
-  return strecpy(b,c,d);
-else
-{
-    int k;
-    k=strlen(c);
-    if(k>a)
-    {
-     strncpy(b,c,a);
-     b[a]='\0';	
-     return strecpy(b,c,d);	     
-    }
-    else 
-	return strecpy(b,c,d);
-}
-}
-char _sstrecpy(char b[],char c[],char d[])
-{
-    int k;
-    k=strlen(c);
-    if(k>4)
-	{ 
-	strncpy(b,c,4);
-	b[4]='\0';
-	return strecpy(b,c,d);
-	}
-	else
-	return strecpy(b,c,d);
-}
-char Sstreadd(int a, char b[],char c[],char d[])
-{
-if (a==4)
-return streadd(b,c,d);
-else
-{   int k;
-    k=strlen(c);
-    if(k>a)	{
-	 strncpy(b,c,a);
-	 b[a]='\0';
-	 return streadd(b,c,d);
-	}
-	else
-	return streadd(b,c,d);
-	
-	}
-}
-char _sstreadd(char b[],char c[],char d[])
-{
-    int k;
-    k=strlen(c);
-    if(k>4)
-	{
-	strncpy(b,c,4);
-	b[4]='\0';
-	return streadd(b,c,d);
-	}
-	else
-	return streadd(b,c,d);
 
-}
-char Sstrccpy(int a, char b[],char c [])
-{
-   int k;
-   k=strlen(c);
-   if (a==4)
-   return strccpy(b,c);
-    else
-       {
-     if(k>a)	{
-	   strncpy(b,c,a);
-	   b[a]='\0';
-	   return strccpy(b,c);
-	}
-	else
-	return strccpy(b,c);
-	}
-}
-char _sstrccpy(char b[],char c[])
-{
-    int k;
-    k=strlen(c);
-    if(k>4)
-	{
-	    strncpy(b,c,4);
-	    b[4]='\0';
-	    return strccpy(b,c);
-	}
-	else
-	return strccpy(b,c);
-}
-*/
 #endif
