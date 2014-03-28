@@ -2,7 +2,7 @@
 
 <a href="http://imgur.com/rYsQEVO"><img src="http://i.imgur.com/rYsQEVO.png" title="Hosted by imgur.com"/></a>
 
-<h4>*****Job Left-2: Scanning the cpp (C++ source code) also not properly functioning. We need to find a way so that scanner can scan C++ codes also.</h4>
+<h4>*****Job Left-2: Scanning the cpp (C++ source code) also not properly functioning. We need to find a way so that scanner can scan C++ codes also. And based on the paper this scanner can scan cpp file.Probably the problem is the way I m compiling here.So I need to create another file with cpp extension where function wrapper can work and then using g++ to compile them all together into a complete scanner can scan c and c++ files.I have uploaded a test-input.cpp file which our scanner fails to scan but in paper it scanned properly and showed the warnings,So I still have to find the properway to compile these codes</h4>
 
 <h4>***** Job Left-3: Most of the Warning messages have been fixed, even the re-write process is working. But we still have to find a way for the less amount of false positives and false negatives. Probably need to test more vulnerable files.</h4>
 
@@ -32,9 +32,8 @@ In spite of having this conflict we were still able to compile the code,so not y
 
 finally <a href="http://en.wikipedia.org/wiki/GNU_Compiler_Collection" target="_blank"><strong>GCC</strong></a> has been used to compile the final executable file
 
-     gcc lex.yy.c y.tab.c -o test   (here test is the application name)
      g++ y.tab.c lex.yy.c -o test   (i have made some change adding extern C function,but with extern C you cant compile with gcc,so you need to use g++ command)
-
+     gcc lex.yy.c y.tab.c -o test   (here test is the application name)
 
 Now to run the scanner you should
 
