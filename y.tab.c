@@ -71,7 +71,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include "SafeLib.h"
+#include"SafeLib.h"
+#include<sys/time.h>
 
 FILE *outFile_p;
 FILE *outFile_p1;
@@ -84,6 +85,9 @@ char *temp[500];
 char *temp2;
 int i=0;
 
+extern "C" 
+{
+
 int yylex(void);
 int yyparse(void);
 void yyerror(const char* str)
@@ -94,16 +98,16 @@ int yywrap()
 {
 return 1;
 }
-
+}
 
 
 
 /* Line 268 of yacc.c  */
-#line 103 "y.tab.c"
+#line 107 "y.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 0
+# define YYDEBUG 1
 #endif
 
 /* Enabling verbose error messages.  */
@@ -126,93 +130,87 @@ return 1;
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     STRCPY = 258,
-     STRCAT = 259,
-     GETS = 260,
-     SPRINTF = 261,
-     VSPRINTF = 262,
-     BCOPY = 263,
-     SCANF = 264,
-     TAB = 265,
-     EOL = 266,
-     SIMICOL = 267,
-     COM = 268,
-     PERCENT = 269,
-     GETOPT = 270,
-     GETPASS = 271,
+     CHAR = 258,
+     STRCPY = 259,
+     STRCAT = 260,
+     BCOPY = 261,
+     MEMCPY = 262,
+     MEMCHR = 263,
+     MEMCCPY = 264,
+     MEMMOVE = 265,
+     MEMSET = 266,
+     SPRINTF = 267,
+     VSPRINTF = 268,
+     GETS = 269,
+     SCANF = 270,
+     GETOPT = 271,
      STRECPY = 272,
      STREADD = 273,
-     STRNCPY = 274,
+     STRCCPY = 274,
      STRTRNS = 275,
-     STRPCPY = 276,
-     WCSCPY = 277,
-     WCPCPY = 278,
-     WCSCAT = 279,
-     GETWD = 280,
-     REALPATH = 281,
-     MEMCPY = 282,
-     MEMCHR = 283,
-     MEMCCPY = 284,
-     MEMMOVE = 285,
-     MEMSET = 286,
-     CHAR = 287,
-     NEW = 288,
-     LBRAK = 289,
-     RBRAK = 290,
-     ANY = 291,
-     PLUS = 292,
-     NUMBER = 293,
-     MUL = 294,
-     TCOM = 295,
-     WORD = 296,
-     LB = 297,
-     RB = 298,
-     WHITE = 299
+     WCSCPY = 276,
+     WCSCAT = 277,
+     GETPASS = 278,
+     REALPATH = 279,
+     NEW = 280,
+     COM = 281,
+     TAB = 282,
+     EOL = 283,
+     SIMICOL = 284,
+     PERCENT = 285,
+     LBRAK = 286,
+     RBRAK = 287,
+     ANY = 288,
+     PLUS = 289,
+     NUMBER = 290,
+     MUL = 291,
+     TCOM = 292,
+     WORD = 293,
+     LB = 294,
+     RB = 295,
+     WHITE = 296
    };
 #endif
 /* Tokens.  */
-#define STRCPY 258
-#define STRCAT 259
-#define GETS 260
-#define SPRINTF 261
-#define VSPRINTF 262
-#define BCOPY 263
-#define SCANF 264
-#define TAB 265
-#define EOL 266
-#define SIMICOL 267
-#define COM 268
-#define PERCENT 269
-#define GETOPT 270
-#define GETPASS 271
+#define CHAR 258
+#define STRCPY 259
+#define STRCAT 260
+#define BCOPY 261
+#define MEMCPY 262
+#define MEMCHR 263
+#define MEMCCPY 264
+#define MEMMOVE 265
+#define MEMSET 266
+#define SPRINTF 267
+#define VSPRINTF 268
+#define GETS 269
+#define SCANF 270
+#define GETOPT 271
 #define STRECPY 272
 #define STREADD 273
-#define STRNCPY 274
+#define STRCCPY 274
 #define STRTRNS 275
-#define STRPCPY 276
-#define WCSCPY 277
-#define WCPCPY 278
-#define WCSCAT 279
-#define GETWD 280
-#define REALPATH 281
-#define MEMCPY 282
-#define MEMCHR 283
-#define MEMCCPY 284
-#define MEMMOVE 285
-#define MEMSET 286
-#define CHAR 287
-#define NEW 288
-#define LBRAK 289
-#define RBRAK 290
-#define ANY 291
-#define PLUS 292
-#define NUMBER 293
-#define MUL 294
-#define TCOM 295
-#define WORD 296
-#define LB 297
-#define RB 298
-#define WHITE 299
+#define WCSCPY 276
+#define WCSCAT 277
+#define GETPASS 278
+#define REALPATH 279
+#define NEW 280
+#define COM 281
+#define TAB 282
+#define EOL 283
+#define SIMICOL 284
+#define PERCENT 285
+#define LBRAK 286
+#define RBRAK 287
+#define ANY 288
+#define PLUS 289
+#define NUMBER 290
+#define MUL 291
+#define TCOM 292
+#define WORD 293
+#define LB 294
+#define RB 295
+#define WHITE 296
 
 
 
@@ -222,7 +220,7 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 66 "y.y"
+#line 76 "y.y"
 
 int number;
 char *string;
@@ -230,7 +228,7 @@ char *string;
 
 
 /* Line 293 of yacc.c  */
-#line 234 "y.tab.c"
+#line 232 "y.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -242,7 +240,7 @@ char *string;
 
 
 /* Line 343 of yacc.c  */
-#line 246 "y.tab.c"
+#line 244 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -461,20 +459,20 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   152
+#define YYLAST   154
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  45
+#define YYNTOKENS  42
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  7
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  82
+#define YYNRULES  80
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  158
+#define YYNSTATES  147
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   299
+#define YYMAXUTOK   296
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -511,7 +509,7 @@ static const yytype_uint8 yytranslate[] =
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
-      35,    36,    37,    38,    39,    40,    41,    42,    43,    44
+      35,    36,    37,    38,    39,    40,    41
 };
 
 #if YYDEBUG
@@ -522,64 +520,63 @@ static const yytype_uint16 yyprhs[] =
        0,     0,     3,     4,     7,     9,    11,    13,    15,    18,
       23,    30,    33,    36,    38,    40,    45,    49,    53,    57,
       62,    68,    74,    81,    88,    90,    93,    98,   104,   110,
-     117,   124,   126,   129,   134,   140,   145,   151,   156,   162,
-     167,   174,   180,   182,   185,   189,   194,   199,   204,   209,
-     215,   222,   227,   233,   238,   244,   249,   251,   256,   261,
-     267,   273,   276,   279,   282,   285,   288,   291,   294,   296,
-     298,   300,   302,   304,   306,   308,   310,   312,   314,   316,
-     318,   320,   322
+     117,   124,   126,   129,   134,   141,   147,   149,   152,   156,
+     161,   167,   174,   179,   185,   192,   197,   203,   208,   214,
+     219,   225,   230,   232,   237,   242,   248,   254,   257,   260,
+     263,   266,   269,   272,   275,   278,   281,   283,   285,   287,
+     289,   291,   293,   295,   297,   299,   301,   303,   305,   307,
+     309
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      46,     0,    -1,    -1,    46,    47,    -1,    50,    -1,    51,
-      -1,    48,    -1,    49,    -1,    32,    41,    -1,    32,    41,
-      42,    41,    -1,    32,    41,    42,    41,    12,    49,    -1,
-      33,    41,    -1,    33,    32,    -1,    33,    -1,    32,    -1,
-      32,    41,    42,    43,    -1,    41,    42,    43,    -1,    41,
-      42,    37,    -1,    41,    42,    41,    -1,     3,    34,    41,
-      12,    -1,     3,    34,    41,    44,    12,    -1,     3,    34,
-      41,    35,    12,    -1,     3,    34,    41,    44,    35,    12,
-      -1,     3,    34,    41,    37,    41,    12,    -1,     3,    -1,
-       3,    34,    -1,     4,    34,    41,    12,    -1,     4,    34,
-      41,    44,    12,    -1,     4,    34,    41,    35,    12,    -1,
-       4,    34,    41,    44,    35,    12,    -1,     4,    34,    41,
-      37,    41,    12,    -1,     4,    -1,     4,    34,    -1,    29,
-      34,    41,    12,    -1,    29,    34,    41,    44,    12,    -1,
-      30,    34,    41,    12,    -1,    30,    34,    41,    44,    12,
-      -1,    31,    34,    41,    12,    -1,    31,    34,    41,    44,
-      12,    -1,     8,    34,    41,    12,    -1,     8,    34,    41,
-      37,    41,    12,    -1,     8,    34,    41,    44,    12,    -1,
-       8,    -1,     8,    34,    -1,     8,    34,    36,    -1,    17,
-      34,    41,    12,    -1,    18,    34,    41,    12,    -1,    19,
-      34,    41,    12,    -1,    27,    34,    41,    12,    -1,    27,
-      34,    41,    44,    12,    -1,    27,    34,    41,    37,    41,
-      12,    -1,    22,    34,    41,    12,    -1,    22,    34,    41,
-      44,    12,    -1,    24,    34,    41,    12,    -1,    24,    34,
-      41,    44,    12,    -1,     6,    34,    41,    12,    -1,     6,
-      -1,     5,    34,    41,    35,    -1,     7,    34,    41,    12,
-      -1,     9,    34,    40,    14,    41,    -1,     9,    34,    40,
-      14,    38,    -1,    15,    34,    -1,    16,    34,    -1,    20,
-      34,    -1,    21,    34,    -1,    25,    34,    -1,    26,    34,
-      -1,    28,    34,    -1,    41,    -1,    44,    -1,    10,    -1,
-      11,    -1,    34,    -1,    35,    -1,    12,    -1,    14,    -1,
-      37,    -1,    36,    -1,    40,    -1,    39,    -1,    13,    -1,
-      42,    -1,    43,    -1
+      43,     0,    -1,    -1,    43,    44,    -1,    47,    -1,    48,
+      -1,    45,    -1,    46,    -1,     3,    38,    -1,     3,    38,
+      39,    38,    -1,     3,    38,    39,    38,    29,    46,    -1,
+      25,    38,    -1,    25,     3,    -1,    25,    -1,     3,    -1,
+       3,    38,    39,    40,    -1,    38,    39,    40,    -1,    38,
+      39,    34,    -1,    38,    39,    38,    -1,     4,    31,    38,
+      29,    -1,     4,    31,    38,    41,    29,    -1,     4,    31,
+      38,    32,    29,    -1,     4,    31,    38,    41,    32,    29,
+      -1,     4,    31,    38,    34,    38,    29,    -1,     4,    -1,
+       4,    31,    -1,     5,    31,    38,    29,    -1,     5,    31,
+      38,    41,    29,    -1,     5,    31,    38,    32,    29,    -1,
+       5,    31,    38,    41,    32,    29,    -1,     5,    31,    38,
+      34,    38,    29,    -1,     5,    -1,     5,    31,    -1,     6,
+      31,    38,    29,    -1,     6,    31,    38,    34,    38,    29,
+      -1,     6,    31,    38,    41,    29,    -1,     6,    -1,     6,
+      31,    -1,     6,    31,    33,    -1,     7,    31,    38,    29,
+      -1,     7,    31,    38,    41,    29,    -1,     7,    31,    38,
+      34,    38,    29,    -1,     8,    31,    38,    29,    -1,     8,
+      31,    38,    41,    29,    -1,     8,    31,    38,    34,    38,
+      29,    -1,     9,    31,    38,    29,    -1,     9,    31,    38,
+      41,    29,    -1,    10,    31,    38,    29,    -1,    10,    31,
+      38,    41,    29,    -1,    11,    31,    38,    29,    -1,    11,
+      31,    38,    41,    29,    -1,    12,    31,    38,    29,    -1,
+      12,    -1,    14,    31,    38,    32,    -1,    13,    31,    38,
+      29,    -1,    15,    31,    37,    30,    38,    -1,    15,    31,
+      37,    30,    35,    -1,    16,    31,    -1,    23,    31,    -1,
+      20,    31,    -1,    24,    31,    -1,    17,    31,    -1,    18,
+      31,    -1,    19,    31,    -1,    21,    31,    -1,    22,    31,
+      -1,    38,    -1,    41,    -1,    27,    -1,    28,    -1,    31,
+      -1,    32,    -1,    29,    -1,    30,    -1,    34,    -1,    33,
+      -1,    37,    -1,    36,    -1,    26,    -1,    39,    -1,    40,
+      -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    87,    87,    88,    92,    94,    96,    98,   101,   103,
-     113,   123,   126,   129,   132,   135,   138,   141,   145,   154,
-     164,   174,   184,   194,   203,   206,   209,   218,   227,   235,
-     244,   252,   255,   258,   267,   277,   286,   296,   305,   315,
-     324,   334,   343,   346,   349,   352,   363,   373,   383,   392,
-     402,   411,   421,   431,   440,   450,   461,   464,   474,   486,
-     491,   494,   499,   504,   509,   514,   517,   522,   528,   529,
-     530,   531,   532,   533,   534,   535,   536,   537,   538,   539,
-     540,   541,   542
+       0,    97,    97,    98,   101,   102,   103,   104,   107,   108,
+     117,   127,   130,   133,   136,   139,   142,   145,   149,   158,
+     168,   178,   188,   198,   207,   210,   213,   222,   231,   239,
+     248,   256,   259,   262,   271,   281,   290,   293,   296,   299,
+     308,   318,   327,   336,   346,   355,   364,   374,   383,   393,
+     402,   412,   423,   426,   436,   448,   453,   456,   461,   466,
+     471,   476,   481,   486,   491,   496,   505,   506,   507,   508,
+     509,   510,   511,   512,   513,   514,   515,   516,   517,   518,
+     519
 };
 #endif
 
@@ -588,14 +585,13 @@ static const yytype_uint16 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "STRCPY", "STRCAT", "GETS", "SPRINTF",
-  "VSPRINTF", "BCOPY", "SCANF", "TAB", "EOL", "SIMICOL", "COM", "PERCENT",
-  "GETOPT", "GETPASS", "STRECPY", "STREADD", "STRNCPY", "STRTRNS",
-  "STRPCPY", "WCSCPY", "WCPCPY", "WCSCAT", "GETWD", "REALPATH", "MEMCPY",
-  "MEMCHR", "MEMCCPY", "MEMMOVE", "MEMSET", "CHAR", "NEW", "LBRAK",
-  "RBRAK", "ANY", "PLUS", "NUMBER", "MUL", "TCOM", "WORD", "LB", "RB",
-  "WHITE", "$accept", "commands", "command", "search3", "search4",
-  "search1", "search2", 0
+  "$end", "error", "$undefined", "CHAR", "STRCPY", "STRCAT", "BCOPY",
+  "MEMCPY", "MEMCHR", "MEMCCPY", "MEMMOVE", "MEMSET", "SPRINTF",
+  "VSPRINTF", "GETS", "SCANF", "GETOPT", "STRECPY", "STREADD", "STRCCPY",
+  "STRTRNS", "WCSCPY", "WCSCAT", "GETPASS", "REALPATH", "NEW", "COM",
+  "TAB", "EOL", "SIMICOL", "PERCENT", "LBRAK", "RBRAK", "ANY", "PLUS",
+  "NUMBER", "MUL", "TCOM", "WORD", "LB", "RB", "WHITE", "$accept",
+  "commands", "command", "search3", "search4", "search1", "search2", 0
 };
 #endif
 
@@ -608,22 +604,22 @@ static const yytype_uint16 yytoknum[] =
      265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
      275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
      285,   286,   287,   288,   289,   290,   291,   292,   293,   294,
-     295,   296,   297,   298,   299
+     295,   296
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    45,    46,    46,    47,    47,    47,    47,    48,    48,
-      48,    48,    48,    48,    48,    48,    48,    48,    49,    50,
-      50,    50,    50,    50,    50,    50,    50,    50,    50,    50,
-      50,    50,    50,    50,    50,    50,    50,    50,    50,    50,
-      50,    50,    50,    50,    50,    50,    50,    50,    50,    50,
-      50,    50,    50,    50,    50,    50,    50,    50,    50,    50,
-      50,    50,    50,    50,    50,    50,    50,    50,    51,    51,
-      51,    51,    51,    51,    51,    51,    51,    51,    51,    51,
-      51,    51,    51
+       0,    42,    43,    43,    44,    44,    44,    44,    45,    45,
+      45,    45,    45,    45,    45,    45,    45,    45,    46,    47,
+      47,    47,    47,    47,    47,    47,    47,    47,    47,    47,
+      47,    47,    47,    47,    47,    47,    47,    47,    47,    47,
+      47,    47,    47,    47,    47,    47,    47,    47,    47,    47,
+      47,    47,    47,    47,    47,    47,    47,    47,    47,    47,
+      47,    47,    47,    47,    47,    47,    48,    48,    48,    48,
+      48,    48,    48,    48,    48,    48,    48,    48,    48,    48,
+      48
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -632,12 +628,12 @@ static const yytype_uint8 yyr2[] =
        0,     2,     0,     2,     1,     1,     1,     1,     2,     4,
        6,     2,     2,     1,     1,     4,     3,     3,     3,     4,
        5,     5,     6,     6,     1,     2,     4,     5,     5,     6,
-       6,     1,     2,     4,     5,     4,     5,     4,     5,     4,
-       6,     5,     1,     2,     3,     4,     4,     4,     4,     5,
-       6,     4,     5,     4,     5,     4,     1,     4,     4,     5,
-       5,     2,     2,     2,     2,     2,     2,     2,     1,     1,
+       6,     1,     2,     4,     6,     5,     1,     2,     3,     4,
+       5,     6,     4,     5,     6,     4,     5,     4,     5,     4,
+       5,     4,     1,     4,     4,     5,     5,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     1,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1
+       1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default reduction number in state STATE-NUM.
@@ -645,57 +641,55 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       2,     0,     1,    24,    31,     0,    56,     0,    42,     0,
-      70,    71,    74,    80,    75,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,    14,    13,    72,    73,    77,    76,    79,    78,    68,
-      81,    82,    69,     3,     6,     7,     4,     5,    25,    32,
-       0,     0,     0,    43,     0,    61,    62,     0,     0,     0,
-      63,    64,     0,     0,    65,    66,     0,    67,     0,     0,
-       0,     8,    12,    11,     0,     0,     0,     0,     0,     0,
-      44,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,    17,    18,    16,    19,     0,     0,     0,
-      26,     0,     0,     0,    57,    55,    58,    39,     0,     0,
-       0,    45,    46,    47,    51,     0,    53,     0,    48,     0,
-       0,    33,     0,    35,     0,    37,     0,     9,    15,    21,
-       0,    20,     0,    28,     0,    27,     0,     0,    41,    60,
-      59,    52,    54,     0,    49,    34,    36,    38,     0,    23,
-      22,    30,    29,    40,    50,     0,    10,     0
+       2,     0,     1,    14,    24,    31,    36,     0,     0,     0,
+       0,     0,    52,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,    13,    78,    68,    69,    72,
+      73,    70,    71,    75,    74,    77,    76,    66,    79,    80,
+      67,     3,     6,     7,     4,     5,     8,    25,    32,    37,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,    57,
+      61,    62,    63,    59,    64,    65,    58,    60,    12,    11,
+       0,     0,     0,     0,    38,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,    17,    18,    16,     9,    15,
+      19,     0,     0,     0,    26,     0,     0,     0,    33,     0,
+       0,    39,     0,     0,    42,     0,     0,    45,     0,    47,
+       0,    49,     0,    51,    54,    53,     0,     0,    21,     0,
+      20,     0,    28,     0,    27,     0,     0,    35,     0,    40,
+       0,    43,    46,    48,    50,    56,    55,     0,    10,    23,
+      22,    30,    29,    34,    41,    44,     0
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     1,    43,    44,    45,    46,    47
+      -1,     1,    41,    42,    43,    44,    45
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -41
-static const yytype_int16 yypact[] =
+#define YYPACT_NINF -38
+static const yytype_int8 yypact[] =
 {
-     -41,     0,   -41,   -33,   -32,    34,    42,    44,    54,    55,
-     -41,   -41,   -41,   -41,   -41,    56,    57,    58,    59,    60,
-      61,    62,    63,    64,    65,    66,    67,    68,    69,    70,
-      71,    28,    24,   -41,   -41,   -41,   -41,   -41,   -41,    25,
-     -41,   -41,   -41,   -41,   -41,   -41,   -41,   -41,    72,    73,
-      74,    75,    76,    30,    46,   -41,   -41,    77,    78,    79,
-     -41,   -41,    80,    81,   -41,   -41,    82,   -41,    83,    84,
-      85,    86,   -41,   -41,    17,    11,    26,    92,    94,    95,
-     -41,    35,    96,    97,    99,   100,    33,    38,    37,    39,
-      40,    41,    32,   -41,   -41,   -41,   -41,   117,    89,    45,
-     -41,   119,    91,    52,   -41,   -41,   -41,   -41,    93,   121,
-      21,   -41,   -41,   -41,   -41,   123,   -41,   124,   -41,    98,
-     125,   -41,   126,   -41,   128,   -41,   129,   130,   -41,   -41,
-     131,   -41,   132,   -41,   133,   -41,   134,   135,   -41,   -41,
-     -41,   -41,   -41,   136,   -41,   -41,   -41,   -41,   108,   -41,
-     -41,   -41,   -41,   -41,   -41,   109,   -41,   111
+     -38,     0,   -38,   -37,   -29,    48,    50,    51,    52,    53,
+      54,    55,    56,    57,    58,    59,    60,    61,    62,    63,
+      64,    65,    66,    67,    68,    32,   -38,   -38,   -38,   -38,
+     -38,   -38,   -38,   -38,   -38,   -38,   -38,    69,   -38,   -38,
+     -38,   -38,   -38,   -38,   -38,   -38,    70,    72,    73,    28,
+      74,    75,    76,    77,    78,    79,    80,    81,    83,   -38,
+     -38,   -38,   -38,   -38,   -38,   -38,   -38,   -38,   -38,   -38,
+      34,    29,    13,    14,   -38,    15,    23,    24,    21,    22,
+      30,    31,    71,    89,    92,   -38,   -38,   -38,    94,   -38,
+     -38,    95,    87,    44,   -38,    97,    90,    46,   -38,    91,
+      98,   -38,    93,   101,   -38,    96,   103,   -38,   104,   -38,
+     106,   -38,   107,   -38,   -38,   -38,    42,    99,   -38,   109,
+     -38,   110,   -38,   111,   -38,   112,   113,   -38,   114,   -38,
+     115,   -38,   -38,   -38,   -38,   -38,   -38,   108,   -38,   -38,
+     -38,   -38,   -38,   -38,   -38,   -38,   116
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -41,   -41,   -41,   -41,   -40,   -41,   -41
+     -38,   -38,   -38,   -38,   -16,   -38,   -38
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -704,70 +698,69 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       2,    48,    49,     3,     4,     5,     6,     7,     8,     9,
+       2,    46,    47,     3,     4,     5,     6,     7,     8,     9,
       10,    11,    12,    13,    14,    15,    16,    17,    18,    19,
-      20,    21,    22,    96,    23,    24,    25,    26,    27,    28,
-      29,    30,    31,    32,    33,    34,    35,    36,   100,    37,
-      38,    39,    40,    41,    42,   114,    97,   107,    98,   118,
-     116,   121,   123,   125,    93,    99,    72,   131,    94,   139,
-      95,   101,   140,   102,   135,    73,    80,    74,    50,    71,
-     103,    81,   108,   127,   119,   128,    51,   115,    52,   109,
-     132,   120,   117,   122,   124,   126,    82,   136,    53,    54,
-      55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
-      65,    66,    67,    68,    69,    70,   105,   106,   156,   111,
-     110,   112,   113,    75,    76,    77,    78,    79,    83,    84,
-      85,    86,    87,    88,    89,    90,    91,   104,    92,   129,
-     130,   133,   134,   138,   137,   141,   142,   144,   145,   143,
-     146,   147,   148,   149,   150,   151,   152,   153,   154,   155,
-       0,   157,    94
+      20,    21,    22,    23,    24,    25,    26,    27,    28,    29,
+      30,    31,    32,    33,    34,    68,    35,    36,    37,    38,
+      39,    40,    90,    94,    98,    91,    95,    92,    96,    99,
+     107,   109,   101,   104,    93,    97,   100,   102,   105,   111,
+     113,    74,   108,   110,   103,   106,    75,    88,    85,    89,
+      69,   112,    86,   120,    87,   124,   121,   135,   125,    48,
+     136,    49,    50,    51,    52,    53,    54,    55,    56,    57,
+      58,    59,    60,    61,    62,    63,    64,    65,    66,    67,
+     114,   138,     0,     0,     0,     0,     0,     0,    70,    71,
+      72,    73,    76,    77,    78,    79,    80,    81,    82,    83,
+      84,   115,   116,   117,   118,   119,   122,   127,   123,   126,
+     129,   128,   131,   132,   130,   133,   134,   137,   139,   140,
+     141,   142,   143,   144,   145,     0,     0,   146,     0,     0,
+       0,     0,     0,     0,    86
 };
 
 #define yypact_value_is_default(yystate) \
-  ((yystate) == (-41))
+  ((yystate) == (-38))
 
 #define yytable_value_is_error(yytable_value) \
   YYID (0)
 
-static const yytype_int16 yycheck[] =
+static const yytype_int8 yycheck[] =
 {
-       0,    34,    34,     3,     4,     5,     6,     7,     8,     9,
+       0,    38,    31,     3,     4,     5,     6,     7,     8,     9,
       10,    11,    12,    13,    14,    15,    16,    17,    18,    19,
-      20,    21,    22,    12,    24,    25,    26,    27,    28,    29,
-      30,    31,    32,    33,    34,    35,    36,    37,    12,    39,
-      40,    41,    42,    43,    44,    12,    35,    12,    37,    12,
-      12,    12,    12,    12,    37,    44,    32,    12,    41,    38,
-      43,    35,    41,    37,    12,    41,    36,    42,    34,    41,
-      44,    41,    37,    41,    37,    43,    34,    44,    34,    44,
-      35,    44,    44,    44,    44,    44,    40,    35,    34,    34,
-      34,    34,    34,    34,    34,    34,    34,    34,    34,    34,
-      34,    34,    34,    34,    34,    34,    12,    12,   148,    12,
-      14,    12,    12,    41,    41,    41,    41,    41,    41,    41,
-      41,    41,    41,    41,    41,    41,    41,    35,    42,    12,
-      41,    12,    41,    12,    41,    12,    12,    12,    12,    41,
-      12,    12,    12,    12,    12,    12,    12,    12,    12,    41,
-      -1,    42,    41
+      20,    21,    22,    23,    24,    25,    26,    27,    28,    29,
+      30,    31,    32,    33,    34,     3,    36,    37,    38,    39,
+      40,    41,    29,    29,    29,    32,    32,    34,    34,    34,
+      29,    29,    29,    29,    41,    41,    41,    34,    34,    29,
+      29,    33,    41,    41,    41,    41,    38,    38,    34,    40,
+      38,    41,    38,    29,    40,    29,    32,    35,    32,    31,
+      38,    31,    31,    31,    31,    31,    31,    31,    31,    31,
+      31,    31,    31,    31,    31,    31,    31,    31,    31,    31,
+      29,   117,    -1,    -1,    -1,    -1,    -1,    -1,    39,    39,
+      38,    38,    38,    38,    38,    38,    38,    38,    38,    38,
+      37,    32,    30,    29,    29,    38,    29,    29,    38,    38,
+      29,    38,    29,    29,    38,    29,    29,    38,    29,    29,
+      29,    29,    29,    29,    29,    -1,    -1,    39,    -1,    -1,
+      -1,    -1,    -1,    -1,    38
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,    46,     0,     3,     4,     5,     6,     7,     8,     9,
+       0,    43,     0,     3,     4,     5,     6,     7,     8,     9,
       10,    11,    12,    13,    14,    15,    16,    17,    18,    19,
-      20,    21,    22,    24,    25,    26,    27,    28,    29,    30,
-      31,    32,    33,    34,    35,    36,    37,    39,    40,    41,
-      42,    43,    44,    47,    48,    49,    50,    51,    34,    34,
-      34,    34,    34,    34,    34,    34,    34,    34,    34,    34,
-      34,    34,    34,    34,    34,    34,    34,    34,    34,    34,
-      34,    41,    32,    41,    42,    41,    41,    41,    41,    41,
-      36,    41,    40,    41,    41,    41,    41,    41,    41,    41,
-      41,    41,    42,    37,    41,    43,    12,    35,    37,    44,
-      12,    35,    37,    44,    35,    12,    12,    12,    37,    44,
-      14,    12,    12,    12,    12,    44,    12,    44,    12,    37,
-      44,    12,    44,    12,    44,    12,    44,    41,    43,    12,
-      41,    12,    35,    12,    41,    12,    35,    41,    12,    38,
-      41,    12,    12,    41,    12,    12,    12,    12,    12,    12,
-      12,    12,    12,    12,    12,    41,    49,    42
+      20,    21,    22,    23,    24,    25,    26,    27,    28,    29,
+      30,    31,    32,    33,    34,    36,    37,    38,    39,    40,
+      41,    44,    45,    46,    47,    48,    38,    31,    31,    31,
+      31,    31,    31,    31,    31,    31,    31,    31,    31,    31,
+      31,    31,    31,    31,    31,    31,    31,    31,     3,    38,
+      39,    39,    38,    38,    33,    38,    38,    38,    38,    38,
+      38,    38,    38,    38,    37,    34,    38,    40,    38,    40,
+      29,    32,    34,    41,    29,    32,    34,    41,    29,    34,
+      41,    29,    34,    41,    29,    34,    41,    29,    41,    29,
+      41,    29,    41,    29,    29,    32,    30,    29,    29,    38,
+      29,    32,    29,    38,    29,    32,    38,    29,    38,    29,
+      38,    29,    29,    29,    29,    35,    38,    38,    46,    29,
+      29,    29,    29,    29,    29,    29,    39
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1604,21 +1597,21 @@ yyreduce:
         case 2:
 
 /* Line 1806 of yacc.c  */
-#line 87 "y.y"
-    {fprintf(outFile_p,"%s","#include \"mylibrary.h\"\n");}
+#line 97 "y.y"
+    {fprintf(outFile_p,"%s","#include \"SafeLib.h\"\n");}
     break;
 
   case 8:
 
 /* Line 1806 of yacc.c  */
-#line 101 "y.y"
+#line 107 "y.y"
     {fprintf(outFile_p,"%s%s","char",(yyvsp[(2) - (2)].string));}
     break;
 
   case 9:
 
 /* Line 1806 of yacc.c  */
-#line 104 "y.y"
+#line 109 "y.y"
     {printf("pointer_before=%d",pointer);temp[i]=(yyvsp[(2) - (4)].string);
        printf("\ni=%d\n",i);
        if(!strcmp((yyvsp[(4) - (4)].string),"4"))
@@ -1632,7 +1625,7 @@ yyreduce:
   case 10:
 
 /* Line 1806 of yacc.c  */
-#line 114 "y.y"
+#line 118 "y.y"
     {printf("pointer_before=%d",pointer);temp[i]=(yyvsp[(2) - (6)].string);
        printf("\ni=%d\n",i);
        if (!strcmp((yyvsp[(4) - (6)].string),"4"))
@@ -1646,56 +1639,56 @@ yyreduce:
   case 11:
 
 /* Line 1806 of yacc.c  */
-#line 124 "y.y"
+#line 128 "y.y"
     {fprintf(outFile_p,"%s%s","new ",(yyvsp[(2) - (2)].string));}
     break;
 
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 127 "y.y"
+#line 131 "y.y"
     {fprintf(outFile_p,"%s%s","new ","char");}
     break;
 
   case 13:
 
 /* Line 1806 of yacc.c  */
-#line 130 "y.y"
+#line 134 "y.y"
     {fprintf(outFile_p,"new");}
     break;
 
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 133 "y.y"
+#line 137 "y.y"
     {fprintf(outFile_p,"char");}
     break;
 
   case 15:
 
 /* Line 1806 of yacc.c  */
-#line 136 "y.y"
+#line 140 "y.y"
     {fprintf(outFile_p,"%s%s%s%s","char ",(yyvsp[(2) - (4)].string),(yyvsp[(3) - (4)].string),(yyvsp[(4) - (4)].string));}
     break;
 
   case 16:
 
 /* Line 1806 of yacc.c  */
-#line 139 "y.y"
+#line 143 "y.y"
     {fprintf(outFile_p,"%s%s%s",(yyvsp[(1) - (3)].string),(yyvsp[(2) - (3)].string),(yyvsp[(3) - (3)].string));}
     break;
 
   case 17:
 
 /* Line 1806 of yacc.c  */
-#line 142 "y.y"
+#line 146 "y.y"
     {fprintf(outFile_p,"%s%s%s",(yyvsp[(1) - (3)].string),(yyvsp[(2) - (3)].string),(yyvsp[(3) - (3)].string));}
     break;
 
   case 18:
 
 /* Line 1806 of yacc.c  */
-#line 146 "y.y"
+#line 150 "y.y"
     {printf("pointer_before=%d",pointer);temp[i]=(yyvsp[(1) - (3)].string);
        printf("\ni=%d\n",i); 
        if (!strcmp((yyvsp[(3) - (3)].string),"4")) {pointer[i]=1;printf("pointer=%d",pointer[i]);}
@@ -1707,345 +1700,341 @@ yyreduce:
   case 19:
 
 /* Line 1806 of yacc.c  */
-#line 155 "y.y"
+#line 159 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~strcpy(",(yyvsp[(3) - (4)].string),",");
         fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcpy","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcpy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 20:
 
 /* Line 1806 of yacc.c  */
-#line 165 "y.y"
+#line 169 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (5)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
 	for(j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~strcpy(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcpy","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcpy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 21:
 
 /* Line 1806 of yacc.c  */
-#line 175 "y.y"
+#line 179 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (5)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
 	for(j=0;j<i;j++)
 	{if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s%s","_~strcpy",(yyvsp[(2) - (5)].string),(yyvsp[(3) - (5)].string),"),");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s%s","_strcpy",(yyvsp[(2) - (5)].string),"sizeof(",(yyvsp[(3) - (5)].string),")),",(yyvsp[(3) - (5)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcpy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 22:
 
 /* Line 1806 of yacc.c  */
-#line 185 "y.y"
+#line 189 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (6)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for (j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~strcpy(",(yyvsp[(3) - (6)].string),",");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcpy","(sizeof(",(yyvsp[(3) - (6)].string),"),",(yyvsp[(3) - (6)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcpy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 23:
 
 /* Line 1806 of yacc.c  */
-#line 195 "y.y"
+#line 199 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (6)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s","~+~strcpy(","4","-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s%s","_strcpy",(yyvsp[(2) - (6)].string),"sizeof(",(yyvsp[(3) - (6)].string),")-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcpy() rewrite process in line %d\n",counter+1);}
+        fprintf(outFile_p1,"\nThere is a strcpy() rewrite process in line %d\n",counter+1);}
     break;
 
   case 24:
 
 /* Line 1806 of yacc.c  */
-#line 204 "y.y"
+#line 208 "y.y"
     {fprintf(outFile_p,"%s","strcpy");}
     break;
 
   case 25:
 
 /* Line 1806 of yacc.c  */
-#line 207 "y.y"
+#line 211 "y.y"
     {fprintf(outFile_p,"%s","strcpy");}
     break;
 
   case 26:
 
 /* Line 1806 of yacc.c  */
-#line 210 "y.y"
+#line 214 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~strcat(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcat","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcat() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcat() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 27:
 
 /* Line 1806 of yacc.c  */
-#line 219 "y.y"
+#line 223 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (5)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for (j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~strcat(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcat","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcat() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcat() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 28:
 
 /* Line 1806 of yacc.c  */
-#line 228 "y.y"
+#line 232 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (5)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
 	for (j=0;j<i;j++)
 	{if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s%s","_~strcat",(yyvsp[(2) - (5)].string),(yyvsp[(3) - (5)].string),"),");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s%s","_strcat",(yyvsp[(2) - (5)].string),"sizeof(",(yyvsp[(3) - (5)].string),")),",(yyvsp[(3) - (5)].string),",");printf("\nfals=%d\n",fals);
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcat() rewrite process in line %d\n",counter+1);}
+        fprintf(outFile_p1,"\nThere is a strcat() rewrite process in line %d\n",counter+1);}
     break;
 
   case 29:
 
 /* Line 1806 of yacc.c  */
-#line 236 "y.y"
+#line 240 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (6)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for (j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s","_~strcat(",(yyvsp[(3) - (6)].string),",");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s","_strcat","(sizeof(",(yyvsp[(3) - (6)].string),"),",(yyvsp[(3) - (6)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcat() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a strcat() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 30:
 
 /* Line 1806 of yacc.c  */
-#line 245 "y.y"
+#line 249 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (6)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for (j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s","~+~strcat(","4","-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");fals=1;break;}k++;}if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s%s","_strcat",(yyvsp[(2) - (6)].string),"sizeof(",(yyvsp[(3) - (6)].string),")-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strcat() rewrite process in line %d\n",counter+1);}
+        fprintf(outFile_p1,"\nThere is a strcat() rewrite process in line %d\n",counter+1);}
     break;
 
   case 31:
 
 /* Line 1806 of yacc.c  */
-#line 253 "y.y"
+#line 257 "y.y"
     {fprintf(outFile_p,"%s","strcat");}
     break;
 
   case 32:
 
 /* Line 1806 of yacc.c  */
-#line 256 "y.y"
+#line 260 "y.y"
     {fprintf(outFile_p,"%s","strcat");}
     break;
 
   case 33:
 
 /* Line 1806 of yacc.c  */
-#line 259 "y.y"
+#line 263 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memccpy(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memccpy","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memccpy() rewrite process in line %d\n",counter+1);
+        for (j=0;j<i;j++)
+        {if (!strcmp(temp[k],temp2) && pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~bcopy(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_bcopy","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
+        fprintf(outFile_p1,"\nThere is a bcopy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 34:
 
 /* Line 1806 of yacc.c  */
-#line 268 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (5)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memccpy(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memccpy","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memccpy() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-    break;
-
-  case 35:
-
-/* Line 1806 of yacc.c  */
-#line 278 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memmove(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memmove","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memmove() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-    break;
-
-  case 36:
-
-/* Line 1806 of yacc.c  */
-#line 287 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (5)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memmove(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memmove","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memmove() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-    break;
-
-  case 37:
-
-/* Line 1806 of yacc.c  */
-#line 297 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memset(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memset","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memset() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-    break;
-
-  case 38:
-
-/* Line 1806 of yacc.c  */
-#line 306 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (5)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memset(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memset","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memset() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-    break;
-
-  case 39:
-
-/* Line 1806 of yacc.c  */
-#line 316 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for (j=0;j<i;j++)
-        {if (!strcmp(temp[k],temp2) && pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~bcopy(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_bcopy","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a bcopy() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-    break;
-
-  case 40:
-
-/* Line 1806 of yacc.c  */
-#line 325 "y.y"
+#line 272 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (6)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for (j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
         {fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s","~+~bcopy","$2","4","-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");fals=1;break;}k++;}
         if(fals==0)
         fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s%s","_bcopy",(yyvsp[(2) - (6)].string),"sizeof(",(yyvsp[(3) - (6)].string),")-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a bcopy() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p1,"\nThere is a bcopy() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}
+    break;
+
+  case 35:
+
+/* Line 1806 of yacc.c  */
+#line 282 "y.y"
+    {int fals=0;temp2=(yyvsp[(3) - (5)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for (j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2) && pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~bcopy(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_bcopy","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
+        fprintf(outFile_p1,"\nThere is a bcopy() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}
+    break;
+
+  case 36:
+
+/* Line 1806 of yacc.c  */
+#line 291 "y.y"
+    {fprintf(outFile_p,"%s","_bcopy");}
+    break;
+
+  case 37:
+
+/* Line 1806 of yacc.c  */
+#line 294 "y.y"
+    {fprintf(outFile_p,"%s%s","_bcopy",(yyvsp[(2) - (2)].string));}
+    break;
+
+  case 38:
+
+/* Line 1806 of yacc.c  */
+#line 297 "y.y"
+    {fprintf(outFile_p,"%s%s%s","_bcopy",(yyvsp[(2) - (3)].string),(yyvsp[(3) - (3)].string));}
+    break;
+
+  case 39:
+
+/* Line 1806 of yacc.c  */
+#line 300 "y.y"
+    {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memcpy(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memcpy","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
+        fprintf(outFile_p1,"\nThere is a memcpy() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}
+    break;
+
+  case 40:
+
+/* Line 1806 of yacc.c  */
+#line 309 "y.y"
+    {int fals=0;temp2=(yyvsp[(3) - (5)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memcpy(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
+        if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memcpy","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
+        fprintf(outFile_p1,"\nThere is a memcpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 41:
 
 /* Line 1806 of yacc.c  */
-#line 335 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (5)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for (j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2) && pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~bcopy(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_bcopy","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a bcopy() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
+#line 319 "y.y"
+    {int fals=0;temp2=(yyvsp[(3) - (6)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s","~+~memcpy(","4","-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");fals=1;break;}k++;}
+        if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s%s","_memcpy",(yyvsp[(2) - (6)].string),"sizeof(",(yyvsp[(3) - (6)].string),")-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");
+        fprintf(outFile_p1,"\nThere is a memcpy() rewrite process in line %d\n",counter+1);}
     break;
 
   case 42:
 
 /* Line 1806 of yacc.c  */
-#line 344 "y.y"
-    {fprintf(outFile_p,"%s","_bcopy");}
+#line 328 "y.y"
+    {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memchr(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memchr","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
+        fprintf(outFile_p1,"\nThere is a memchr() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}
     break;
 
   case 43:
 
 /* Line 1806 of yacc.c  */
-#line 347 "y.y"
-    {fprintf(outFile_p,"%s%s","_bcopy",(yyvsp[(2) - (2)].string));}
+#line 337 "y.y"
+    {int fals=0;temp2=(yyvsp[(3) - (5)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memchr(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
+        if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memchr","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
+        fprintf(outFile_p1,"\nThere is a memchr() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}
     break;
 
   case 44:
 
 /* Line 1806 of yacc.c  */
-#line 350 "y.y"
-    {fprintf(outFile_p,"%s%s%s","_bcopy",(yyvsp[(2) - (3)].string),(yyvsp[(3) - (3)].string));}
+#line 347 "y.y"
+    {int fals=0;temp2=(yyvsp[(3) - (6)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+        for(j=0;j<i;j++)
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s","~+~memchr(","4","-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");fals=1;break;}k++;}
+        if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s%s","_memchr",(yyvsp[(2) - (6)].string),"sizeof(",(yyvsp[(3) - (6)].string),")-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");
+        fprintf(outFile_p1,"\nThere is a memchr() rewrite process in line %d\n",counter+1);}
     break;
 
   case 45:
 
 /* Line 1806 of yacc.c  */
-#line 353 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (4)].string);
-        printf("\ntemp2=%s\n",temp2);
-        int j=0;int k=0;
+#line 356 "y.y"
+    {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2) && pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~strecpy(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_strecpy","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strecpy() rewrite process in line %d\n",counter+1);
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memccpy(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memccpy","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
+        fprintf(outFile_p1,"\nThere is a memccpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 46:
 
 /* Line 1806 of yacc.c  */
-#line 364 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+#line 365 "y.y"
+    {int fals=0;temp2=(yyvsp[(3) - (5)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2) && pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~streadd(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memccpy(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
         if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_streadd","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a streadd() rewrite process in line %d\n",counter+1);
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memccpy","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
+        fprintf(outFile_p1,"\nThere is a memccpy() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 47:
 
 /* Line 1806 of yacc.c  */
-#line 374 "y.y"
+#line 375 "y.y"
     {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2) && pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","~strlcpy(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","strlcpy","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a strncpy() rewrite process in line %d\n",counter+1);
+        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
+        {fprintf(outFile_p,"%s%s%s","_~memmove(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memmove","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
+        fprintf(outFile_p1,"\nThere is a memmove() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
@@ -2053,26 +2042,26 @@ yyreduce:
 
 /* Line 1806 of yacc.c  */
 #line 384 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+    {int fals=0;temp2=(yyvsp[(3) - (5)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memcpy(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memcpy","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memcpy() rewrite process in line %d\n",counter+1);
+        {fprintf(outFile_p,"%s%s%s","_~memmove(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
+        if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memmove","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
+        fprintf(outFile_p1,"\nThere is a memmove() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
   case 49:
 
 /* Line 1806 of yacc.c  */
-#line 393 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (5)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+#line 394 "y.y"
+    {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~memcpy(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_memcpy","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memcpy() rewrite process in line %d\n",counter+1);
+        {fprintf(outFile_p,"%s%s%s","_~memset(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memset","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
+        fprintf(outFile_p1,"\nThere is a memset() rewrite process in line %d\n",counter+1);
         printf("\nfals=%d\n",fals);}
     break;
 
@@ -2080,74 +2069,20 @@ yyreduce:
 
 /* Line 1806 of yacc.c  */
 #line 403 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (6)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
+    {int fals=0;temp2=(yyvsp[(3) - (5)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s","~+~memcpy(","4","-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");fals=1;break;}k++;}
+        {fprintf(outFile_p,"%s%s%s","_~memset(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
         if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s%s%s%s%s%s","_memcpy",(yyvsp[(2) - (6)].string),"sizeof(",(yyvsp[(3) - (6)].string),")-",(yyvsp[(5) - (6)].string),",",(yyvsp[(3) - (6)].string),"+",(yyvsp[(5) - (6)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a memcpy() rewrite process in line %d\n",counter+1);}
+        fprintf(outFile_p,"%s%s%s%s%s%s","_memset","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
+        fprintf(outFile_p1,"\nThere is a memset() rewrite process in line %d\n",counter+1);
+        printf("\nfals=%d\n",fals);}
     break;
 
   case 51:
 
 /* Line 1806 of yacc.c  */
-#line 412 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for (j=0;j<i;j++)
-        {if (!strcmp(temp[k],temp2) && pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~wcscpy(",(yyvsp[(3) - (4)].string),",");break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s","_wcscpy","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-write Warning::There is a wcscpy() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-    break;
-
-  case 52:
-
-/* Line 1806 of yacc.c  */
-#line 422 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (5)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~wcscpy(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_wcscpy","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a wcscpy() rewrite process in line %d\n",counter+1);
-        printf("\nflas=%d\n",fals);}
-    break;
-
-  case 53:
-
-/* Line 1806 of yacc.c  */
-#line 432 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~wcscat(",(yyvsp[(3) - (4)].string),",");fals=1;break;}k++;}if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_wcscat","(sizeof(",(yyvsp[(3) - (4)].string),"),",(yyvsp[(3) - (4)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a wcscat() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-    break;
-
-  case 54:
-
-/* Line 1806 of yacc.c  */
-#line 441 "y.y"
-    {int fals=0;temp2=(yyvsp[(3) - (5)].string),printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
-        for(j=0;j<i;j++)
-        {if(!strcmp(temp[k],temp2)&& pointer[k]==1)
-        {fprintf(outFile_p,"%s%s%s","_~wcscat(",(yyvsp[(3) - (5)].string),",");fals=1;break;}k++;}
-        if(fals==0)
-        fprintf(outFile_p,"%s%s%s%s%s%s","_wcscat","(sizeof(",(yyvsp[(3) - (5)].string),"),",(yyvsp[(3) - (5)].string),",");
-        fprintf(outFile_p1,"\n Re-Write Warning::There is a wcscat() rewrite process in line %d\n",counter+1);
-        printf("\nfals=%d\n",fals);}
-    break;
-
-  case 55:
-
-/* Line 1806 of yacc.c  */
-#line 451 "y.y"
+#line 413 "y.y"
     {int flipper1=0;int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for (j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
@@ -2159,17 +2094,17 @@ yyreduce:
         if(flipper1==0)fprintf(outFile_p,"%s%s%s","sprintf(",(yyvsp[(3) - (4)].string),",");}
     break;
 
-  case 56:
+  case 52:
 
 /* Line 1806 of yacc.c  */
-#line 462 "y.y"
+#line 424 "y.y"
     {fprintf(outFile_p,"%s","sprintf");}
     break;
 
-  case 57:
+  case 53:
 
 /* Line 1806 of yacc.c  */
-#line 465 "y.y"
+#line 427 "y.y"
     {int flipper1=0;int fals=0;temp2=(yyvsp[(3) - (4)].string);printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for (j=0;j<i;j++)
         {if(!strcmp(temp[k],temp2) && pointer[k]==1)
@@ -2180,10 +2115,10 @@ yyreduce:
         fprintf(outFile_p,"%s%s%s","gets(",(yyvsp[(3) - (4)].string),")");}
     break;
 
-  case 58:
+  case 54:
 
 /* Line 1806 of yacc.c  */
-#line 475 "y.y"
+#line 437 "y.y"
     {int flipper1=0;int fals=0;temp2=(yyvsp[(3) - (4)].string);
         printf("\ntemp2=%s\n",temp2);int j=0;int k=0;
         for(j=0;j<i;j++)
@@ -2196,192 +2131,212 @@ yyreduce:
         if(flipper1==0)fprintf(outFile_p,"%s%s%s","vsprintf(",(yyvsp[(3) - (4)].string),",");}
     break;
 
-  case 59:
+  case 55:
 
 /* Line 1806 of yacc.c  */
-#line 487 "y.y"
+#line 449 "y.y"
     {fprintf(outFile_p,"%s%s%s%s","\n/*There is a buffer overflow security problem using the following SCANF()*/\nscanf(","\"","%",(yyvsp[(5) - (5)].string));
 	fprintf(outFile_p1,"\n High-Risk Warning::There is a scanf() buffer overflow security problem \n in line= %d,make sure that \%%s is given\n a defined value(i,e,\%%32s)\n",counter +1); 
 	printf ("High-Risk Warning::There is a scanf() buffer overflow security problem in line=%d\n",counter+1);}
     break;
 
+  case 56:
+
+/* Line 1806 of yacc.c  */
+#line 454 "y.y"
+    {fprintf(outFile_p,"%s%s%s%s","scanf(","\"","%",(yyvsp[(5) - (5)].string));}
+    break;
+
+  case 57:
+
+/* Line 1806 of yacc.c  */
+#line 457 "y.y"
+    {fprintf(outFile_p,"\n/*There is a buffer overflow security problem using the following GETOPT()*/\ngetopt()");
+	fprintf(outFile_p1,"\n High-Risk Warning::There is a getopt() buffer overflow security problem in line %d\n",counter+1); 
+        printf ("Warning:buffer overflow problem in line=%d\n",counter+1);}
+    break;
+
+  case 58:
+
+/* Line 1806 of yacc.c  */
+#line 462 "y.y"
+    {fprintf(outFile_p,"\n/*There is a buffer overflow security problem using the following GETPASS()*/\ngetpass()");
+        fprintf(outFile_p1,"\n High-Risk Warning::There is a getpass() buffer overflow security problem in line %d\n",counter+1); 
+        printf ("Warning:buffer overflow problem in line=%d\n",counter+1);}
+    break;
+
+  case 59:
+
+/* Line 1806 of yacc.c  */
+#line 467 "y.y"
+    {fprintf(outFile_p,"/*There is a buffer overflow security problem using the following STRTRNS()*/strtrns()");
+        fprintf(outFile_p1,"\n Medium-Risk Warning::There is a buffer overflow security problem in line %d\n",counter+1); 
+        printf ("Warning:buffer overflow problem in line=%d\n",counter+1);}
+    break;
+
   case 60:
 
 /* Line 1806 of yacc.c  */
-#line 492 "y.y"
-    {fprintf(outFile_p,"%s%s%s%s","scanf(","\"","%",(yyvsp[(5) - (5)].string));}
+#line 472 "y.y"
+    {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following REALPATH()*/\nrealpath()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a realpath() buffer overflow security problem in line %d\n",counter+1);
+	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
     break;
 
   case 61:
 
 /* Line 1806 of yacc.c  */
-#line 495 "y.y"
-    {fprintf(outFile_p,"\n/*There is a buffer overflow security problem using the following GETOPT()*/\ngetopt(");
-	fprintf(outFile_p1,"\n High-Risk Warning::There is a getopt() buffer overflow security problem in line %d\n",counter+1); 
-        printf ("Warning:buffer overflow problem in line=%d\n",counter+1);}
+#line 477 "y.y"
+    {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following STRECPY()*/\nstrecpy()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a strecpy() buffer overflow security problem in line %d\n",counter+1);
+	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
     break;
 
   case 62:
 
 /* Line 1806 of yacc.c  */
-#line 500 "y.y"
-    {fprintf(outFile_p,"\n/*There is a buffer overflow security problem using the following GETPASS()*/\ngetpass(");
-        fprintf(outFile_p1,"\n High-Risk Warning::There is a getpass() buffer overflow security problem in line %d\n",counter+1); 
-        printf ("Warning:buffer overflow problem in line=%d\n",counter+1);}
+#line 482 "y.y"
+    {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following STREADD()*/\nstreadd()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a streadd() buffer overflow security problem in line %d\n",counter+1);
+	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
     break;
 
   case 63:
 
 /* Line 1806 of yacc.c  */
-#line 505 "y.y"
-    {fprintf(outFile_p,"/*There is a buffer overflow security problem using the following STRTRNS()*/strtrns(");
-        fprintf(outFile_p1,"\n Medium-Risk Warning::There is a buffer overflow security problem in line %d\n",counter+1); 
-        printf ("Warning:buffer overflow problem in line=%d\n",counter+1);}
+#line 487 "y.y"
+    {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following STRCCPY()*/\nstrccpy()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a strccpy() buffer overflow security problem in line %d\n",counter+1);
+	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
     break;
 
   case 64:
 
 /* Line 1806 of yacc.c  */
-#line 510 "y.y"
-    {fprintf(outFile_p,"/*There is a buffer overflow security problem using the following STRPCPY()*/strpcpy(");
-        fprintf(outFile_p1,"\n Medium-Risk Warning::There is a buffer overflow security problem in line %d\n",counter+1); 
-        printf ("Warning:buffer overflow problem in line=%d\n",counter+1);}
+#line 492 "y.y"
+    {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following WCSCPY()*/\nwcscpy()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a wcscpy() buffer overflow security problem in line %d\n",counter+1);
+	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
     break;
 
   case 65:
 
 /* Line 1806 of yacc.c  */
-#line 514 "y.y"
-    {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following GETWD()*/\ngetwd(");
-        fprintf(outFile_p1,"\n Low-Risk Warning::There is a getwd() buffer overflow security problem in line %d\n",counter+1);printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
+#line 497 "y.y"
+    {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following WCSCAT()*/\nwcscat()");
+	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a wcscat() buffer overflow security problem in line %d\n",counter+1);
+	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
     break;
 
   case 66:
 
 /* Line 1806 of yacc.c  */
-#line 518 "y.y"
-    {fprintf(outFile_p,"\n/*Warning::There is buffer overflow security problem using the following REALPATH()*/\nrealpath(");
-	fprintf(outFile_p1,"\n Medium-Risk Warning::There is a realpath() buffer everflow security problem in line %d\n",counter+1);
-	printf("Warning:buffer overflow problem in line =%d\n",counter+1);}
+#line 505 "y.y"
+    {fprintf(outFile_p,(yyvsp[(1) - (1)].string));}
     break;
 
   case 67:
 
 /* Line 1806 of yacc.c  */
-#line 523 "y.y"
-    {fprintf(outFile_p,"/*Warning: Possible buffer overflow may happen using this function */memchr(");
-        fprintf(outFile_p1,"\n Low-Risk Warning:: Possible buffer overflow may happen using the memch() in line=%d\n",counter+1);}
+#line 506 "y.y"
+    {fprintf(outFile_p,(yyvsp[(1) - (1)].string));}
     break;
 
   case 68:
 
 /* Line 1806 of yacc.c  */
-#line 528 "y.y"
-    {fprintf(outFile_p,(yyvsp[(1) - (1)].string));}
+#line 507 "y.y"
+    {fprintf(outFile_p,"\t");}
     break;
 
   case 69:
 
 /* Line 1806 of yacc.c  */
-#line 529 "y.y"
-    {fprintf(outFile_p,(yyvsp[(1) - (1)].string));}
+#line 508 "y.y"
+    {counter=counter+1;fprintf(outFile_p,"\n");}
     break;
 
   case 70:
 
 /* Line 1806 of yacc.c  */
-#line 530 "y.y"
-    {fprintf(outFile_p,"\t");}
+#line 509 "y.y"
+    {fprintf(outFile_p,(yyvsp[(1) - (1)].string));}
     break;
 
   case 71:
 
 /* Line 1806 of yacc.c  */
-#line 531 "y.y"
-    {counter=counter+1;fprintf(outFile_p,"\n");}
+#line 510 "y.y"
+    {fprintf(outFile_p,(yyvsp[(1) - (1)].string));}
     break;
 
   case 72:
 
 /* Line 1806 of yacc.c  */
-#line 532 "y.y"
-    {fprintf(outFile_p,(yyvsp[(1) - (1)].string));}
+#line 511 "y.y"
+    {fprintf(outFile_p,",");}
     break;
 
   case 73:
 
 /* Line 1806 of yacc.c  */
-#line 533 "y.y"
-    {fprintf(outFile_p,(yyvsp[(1) - (1)].string));}
+#line 512 "y.y"
+    {fprintf(outFile_p,"%%");}
     break;
 
   case 74:
 
 /* Line 1806 of yacc.c  */
-#line 534 "y.y"
-    {fprintf(outFile_p,",");}
+#line 513 "y.y"
+    {fprintf(outFile_p,"+");}
     break;
 
   case 75:
 
 /* Line 1806 of yacc.c  */
-#line 535 "y.y"
-    {fprintf(outFile_p,"%%");}
+#line 514 "y.y"
+    {fprintf(outFile_p,(yyvsp[(1) - (1)].string));}
     break;
 
   case 76:
 
 /* Line 1806 of yacc.c  */
-#line 536 "y.y"
-    {fprintf(outFile_p,"+");}
+#line 515 "y.y"
+    {fprintf(outFile_p,"\"");}
     break;
 
   case 77:
 
 /* Line 1806 of yacc.c  */
-#line 537 "y.y"
+#line 516 "y.y"
     {fprintf(outFile_p,(yyvsp[(1) - (1)].string));}
     break;
 
   case 78:
 
 /* Line 1806 of yacc.c  */
-#line 538 "y.y"
-    {fprintf(outFile_p,"\"");}
+#line 517 "y.y"
+    {fprintf(outFile_p,";");}
     break;
 
   case 79:
 
 /* Line 1806 of yacc.c  */
-#line 539 "y.y"
-    {fprintf(outFile_p,(yyvsp[(1) - (1)].string));}
+#line 518 "y.y"
+    {fprintf(outFile_p,"[");}
     break;
 
   case 80:
 
 /* Line 1806 of yacc.c  */
-#line 540 "y.y"
-    {fprintf(outFile_p,";");}
-    break;
-
-  case 81:
-
-/* Line 1806 of yacc.c  */
-#line 541 "y.y"
-    {fprintf(outFile_p,"[");}
-    break;
-
-  case 82:
-
-/* Line 1806 of yacc.c  */
-#line 542 "y.y"
+#line 519 "y.y"
     {fprintf(outFile_p,"]");}
     break;
 
 
 
 /* Line 1806 of yacc.c  */
-#line 2385 "y.tab.c"
+#line 2340 "y.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2612,19 +2567,32 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 544 "y.y"
+#line 521 "y.y"
 
      
-     int main(int argc,char*argv[])
+     int main(int argc,char*argv[])  
      {
+       
+         int line_count = 0;
          FILE *fp;
+         char ch;
+         fp=fopen(argv[1],"r");
+         while ((ch = fgetc(fp)) != EOF)
+         {
+         if (ch  ==  '\n')
+         {
+         line_count++;
+         }
+         }     
+         
          if(argc<3)
          {
              printf("please specify the input and out file \n");
              exit(0);
              }
+         
          fp=fopen(argv[1],"r");
-         if(!fp)
+          if(!fp)
              {
                  printf("couldn't open file for reading \n");
                  exit(0);
@@ -2641,10 +2609,23 @@ yyreturn:
                  printf("couldn't open temp for writing outfile_p1 \n");
                  exit(0);
                  }
-         yyin=fp;
-         yyparse();
-         fclose(fp);
-         fclose(outFile_p);
-		 }
-
+        
+    struct timeval tim; 
+    gettimeofday(&tim, NULL);  
+    double t1=tim.tv_sec+(tim.tv_usec/1000000.0);                   
+    yyin=fp;
+    yyparse();
+    gettimeofday(&tim, NULL);  
+    double t2=tim.tv_sec+(tim.tv_usec/1000000.0);
+    double fsecs;  
+    fclose(fp);
+    fclose(outFile_p);
+    fsecs=t2 - t1;
+    printf("\n###########SCANNING ANALYSIS###################\n");
+    printf("\nTOTAL LINES ANALYZED: %d\n", line_count);
+    printf("\nTOTAL TIMES TO SCAN :%.6lf seconds\n", fsecs);
+    printf("\nSCANNED LINES PER SECOND:%d\n", (int)(line_count/fsecs));
+    printf("\n################################################\n");
+    return 0;
+  }
 
