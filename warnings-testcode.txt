@@ -1,154 +1,76 @@
 
- Re-Write Warning::There is a strcpy() rewrite process in line 713
+There is a strcpy() rewrite process in line 469
 
- Re-Write Warning::There is a strcpy() rewrite process in line 757
+There is a strcpy() rewrite process in line 478
 
- Re-Write Warning::There is a strcpy() rewrite process in line 1095
+There is a strcpy() rewrite process in line 486
 
- Re-Write Warning::There is a strcpy() rewrite process in line 1101
+There is a strcpy() rewrite process in line 497
 
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 1131::It is recommended to use snprintf() instead of sprintf()....
+There is a strcpy() rewrite process in line 514
 
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 1204::It is recommended to use snprintf() instead of sprintf()....
+There is a strcpy() rewrite process in line 531
 
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 1304::It is recommended to use snprintf() instead of sprintf()....
+There is a strcpy() rewrite process in line 535
 
- Re-Write Warning::There is a strncpy() rewrite process in line 1408
+There is a strcpy() rewrite process in line 600
 
- Re-Write Warning::There is a strcpy() rewrite process in line 1412
+There is a strcpy() rewrite process in line 883
 
- Re-Write Warning::There is a strcpy() rewrite process in line 1420
+There is a strcpy() rewrite process in line 886
 
- Re-Write Warning::There is a memcpy() rewrite process in line 1458
+There is a strcpy() rewrite process in line 889
 
- Re-Write Warning::There is a memcpy() rewrite process in line 1501
+There is a strcat() rewrite process in line 896
 
- Re-Write Warning::There is a strcpy() rewrite process in line 1597
+ High-Risk Warning::There is a sprintf() buffer overflow security problem in line 1069::It is recommended to use snprintf() instead of sprintf()....
 
- Re-Write Warning::There is a strncpy() rewrite process in line 1798
+ High-Risk Warning::There is a sprintf() buffer overflow security problem in line 1073::It is recommended to use snprintf() instead of sprintf()....
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2079
+ High-Risk Warning::There is a sprintf() buffer overflow security problem in line 1075::It is recommended to use snprintf() instead of sprintf()....
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2086
+ High-Risk Warning::There is a sprintf() buffer overflow security problem in line 1092::It is recommended to use snprintf() instead of sprintf()....
 
- Low-Risk Warning::There is a getwd() buffer overflow security problem in line 2104
+ High-Risk Warning::There is a sprintf() buffer overflow security problem in line 1096::It is recommended to use snprintf() instead of sprintf()....
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2109
+ High-Risk Warning::There is a sprintf() buffer overflow security problem in line 1098::It is recommended to use snprintf() instead of sprintf()....
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2113
+There is a strcpy() rewrite process in line 1258
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2118
+There is a strcpy() rewrite process in line 1263
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2120
+There is a strcpy() rewrite process in line 1435
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2126
+There is a strcpy() rewrite process in line 1440
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2132
+There is a strcpy() rewrite process in line 1874
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2138
+There is a strcpy() rewrite process in line 1880
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2146
+There is a strcpy() rewrite process in line 1930
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2148
+There is a strcpy() rewrite process in line 1936
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2210
+There is a strcpy() rewrite process in line 1973
 
- Re-Write Warning::There is a strncpy() rewrite process in line 2221
+ High-Risk Warning::There is a sprintf() buffer overflow security problem in line 1980::It is recommended to use snprintf() instead of sprintf()....
 
- Re-Write Warning::There is a strcpy() rewrite process in line 2247
+There is a strcpy() rewrite process in line 2144
 
- Re-Write Warning::There is a strcpy() rewrite process in line 2256
+There is a strcpy() rewrite process in line 2148
 
- Re-Write Warning::There is a strcpy() rewrite process in line 2264
+There is a strcpy() rewrite process in line 2150
 
- Re-Write Warning::There is a strcpy() rewrite process in line 2275
+There is a strcpy() rewrite process in line 2152
 
- Re-Write Warning::There is a strcpy() rewrite process in line 2292
+There is a strcpy() rewrite process in line 2213
 
- Re-Write Warning::There is a strcpy() rewrite process in line 2309
+There is a strcpy() rewrite process in line 2217
 
- Re-Write Warning::There is a strcpy() rewrite process in line 2313
+There is a strcpy() rewrite process in line 2219
 
- Re-Write Warning::There is a strcpy() rewrite process in line 2378
+There is a strcpy() rewrite process in line 2221
 
- Low-Risk Warning::There is a getwd() buffer overflow security problem in line 2457
+ High-Risk Warning::There is a sprintf() buffer overflow security problem in line 2248::It is recommended to use snprintf() instead of sprintf()....
 
- Low-Risk Warning::There is a getwd() buffer overflow security problem in line 2526
-
- Re-Write Warning::There is a strcpy() rewrite process in line 2661
-
- Re-Write Warning::There is a strcpy() rewrite process in line 2664
-
- Re-Write Warning::There is a strcpy() rewrite process in line 2667
-
- Re-Write Warning::There is a strcat() rewrite process in line 2674
-
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 2847::It is recommended to use snprintf() instead of sprintf()....
-
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 2851::It is recommended to use snprintf() instead of sprintf()....
-
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 2853::It is recommended to use snprintf() instead of sprintf()....
-
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 2870::It is recommended to use snprintf() instead of sprintf()....
-
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 2874::It is recommended to use snprintf() instead of sprintf()....
-
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 2876::It is recommended to use snprintf() instead of sprintf()....
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3036
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3041
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3213
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3218
-
- Re-Write Warning::There is a strncpy() rewrite process in line 3627
-
- Re-Write Warning::There is a strncpy() rewrite process in line 3628
-
- Re-Write Warning::There is a strncpy() rewrite process in line 3630
-
- Re-Write Warning::There is a strncpy() rewrite process in line 3631
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3652
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3658
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3708
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3714
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3751
-
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 3758::It is recommended to use snprintf() instead of sprintf()....
-
- Re-Write Warning::There is a strncpy() rewrite process in line 3825
-
- Re-Write Warning::There is a strncpy() rewrite process in line 3853
-
- Re-Write Warning::There is a strncpy() rewrite process in line 3878
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3922
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3926
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3928
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3930
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3991
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3995
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3997
-
- Re-Write Warning::There is a strcpy() rewrite process in line 3999
-
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 4026::It is recommended to use snprintf() instead of sprintf()....
-
- High-Risk Warning::There is a sprintf() buffer overflow security problem in line 4108::It is recommended to use snprintf() instead of sprintf()....
-
- High-Risk Warning::There is a getopt() buffer overflow security problem in line 4167
-
- Re-Write Warning::There is a strcpy() rewrite process in line 4232
+ High-Risk Warning::There is a sprintf() buffer overflow security problem in line 2330::It is recommended to use snprintf() instead of sprintf()....
