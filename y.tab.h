@@ -37,93 +37,87 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     STRCPY = 258,
-     STRCAT = 259,
-     GETS = 260,
-     SPRINTF = 261,
-     VSPRINTF = 262,
-     BCOPY = 263,
-     SCANF = 264,
-     TAB = 265,
-     EOL = 266,
-     SIMICOL = 267,
-     COM = 268,
-     PERCENT = 269,
-     GETOPT = 270,
-     GETPASS = 271,
+     CHAR = 258,
+     STRCPY = 259,
+     STRCAT = 260,
+     BCOPY = 261,
+     MEMCPY = 262,
+     MEMCHR = 263,
+     MEMCCPY = 264,
+     MEMMOVE = 265,
+     MEMSET = 266,
+     SPRINTF = 267,
+     VSPRINTF = 268,
+     GETS = 269,
+     SCANF = 270,
+     GETOPT = 271,
      STRECPY = 272,
      STREADD = 273,
-     STRNCPY = 274,
+     STRCCPY = 274,
      STRTRNS = 275,
-     STRPCPY = 276,
-     WCSCPY = 277,
-     WCPCPY = 278,
-     WCSCAT = 279,
-     GETWD = 280,
-     REALPATH = 281,
-     MEMCPY = 282,
-     MEMCHR = 283,
-     MEMCCPY = 284,
-     MEMMOVE = 285,
-     MEMSET = 286,
-     CHAR = 287,
-     NEW = 288,
-     LBRAK = 289,
-     RBRAK = 290,
-     ANY = 291,
-     PLUS = 292,
-     NUMBER = 293,
-     MUL = 294,
-     TCOM = 295,
-     WORD = 296,
-     LB = 297,
-     RB = 298,
-     WHITE = 299
+     WCSCPY = 276,
+     WCSCAT = 277,
+     GETPASS = 278,
+     REALPATH = 279,
+     NEW = 280,
+     COM = 281,
+     TAB = 282,
+     EOL = 283,
+     SIMICOL = 284,
+     PERCENT = 285,
+     LBRAK = 286,
+     RBRAK = 287,
+     ANY = 288,
+     PLUS = 289,
+     NUMBER = 290,
+     MUL = 291,
+     TCOM = 292,
+     WORD = 293,
+     LB = 294,
+     RB = 295,
+     WHITE = 296
    };
 #endif
 /* Tokens.  */
-#define STRCPY 258
-#define STRCAT 259
-#define GETS 260
-#define SPRINTF 261
-#define VSPRINTF 262
-#define BCOPY 263
-#define SCANF 264
-#define TAB 265
-#define EOL 266
-#define SIMICOL 267
-#define COM 268
-#define PERCENT 269
-#define GETOPT 270
-#define GETPASS 271
+#define CHAR 258
+#define STRCPY 259
+#define STRCAT 260
+#define BCOPY 261
+#define MEMCPY 262
+#define MEMCHR 263
+#define MEMCCPY 264
+#define MEMMOVE 265
+#define MEMSET 266
+#define SPRINTF 267
+#define VSPRINTF 268
+#define GETS 269
+#define SCANF 270
+#define GETOPT 271
 #define STRECPY 272
 #define STREADD 273
-#define STRNCPY 274
+#define STRCCPY 274
 #define STRTRNS 275
-#define STRPCPY 276
-#define WCSCPY 277
-#define WCPCPY 278
-#define WCSCAT 279
-#define GETWD 280
-#define REALPATH 281
-#define MEMCPY 282
-#define MEMCHR 283
-#define MEMCCPY 284
-#define MEMMOVE 285
-#define MEMSET 286
-#define CHAR 287
-#define NEW 288
-#define LBRAK 289
-#define RBRAK 290
-#define ANY 291
-#define PLUS 292
-#define NUMBER 293
-#define MUL 294
-#define TCOM 295
-#define WORD 296
-#define LB 297
-#define RB 298
-#define WHITE 299
+#define WCSCPY 276
+#define WCSCAT 277
+#define GETPASS 278
+#define REALPATH 279
+#define NEW 280
+#define COM 281
+#define TAB 282
+#define EOL 283
+#define SIMICOL 284
+#define PERCENT 285
+#define LBRAK 286
+#define RBRAK 287
+#define ANY 288
+#define PLUS 289
+#define NUMBER 290
+#define MUL 291
+#define TCOM 292
+#define WORD 293
+#define LB 294
+#define RB 295
+#define WHITE 296
 
 
 
@@ -133,7 +127,7 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 66 "y.y"
+#line 76 "y.y"
 
 int number;
 char *string;
@@ -141,7 +135,7 @@ char *string;
 
 
 /* Line 2068 of yacc.c  */
-#line 145 "y.tab.h"
+#line 139 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
